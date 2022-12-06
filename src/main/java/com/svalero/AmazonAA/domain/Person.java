@@ -1,13 +1,48 @@
 package com.svalero.AmazonAA.domain;
 
-import java.time.LocalDate;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity(name = "person")
 public class Person {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    String name;
-    String username;
-    String password;
-    String address;
-    String phoneNumber;
-    LocalDate birthdate;
+    @Column
+    @NotBlank(message = "El nombre no puede estar vacio")
+    @NotNull(message = "El nombre es obligatorio")
+    private String name;
+
+    @Column(unique = true)
+    @NotBlank(message = "El nombre de usuario no puede estar vacio")
+    @NotNull(message = "El nombre de usuario es obligatorio")
+    private String username;
+
+    @NotBlank(message = "La contraseña no puede estar vacia")
+    @NotNull(message = "La contraseña es obligatoria")
+    private String password;
+
+    @Column
+    private String address;
+
+    @Column
+    private String phoneNumber;
+
+    @Column
+    private LocalDate birthdate;
+
+    @OneToMany(mappedBy = "customerReview")
+    private List<Review> reviews;
 }
