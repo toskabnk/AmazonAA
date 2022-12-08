@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.svalero.AmazonAA.util.ErrorExceptionUtil.getErrorExceptionResponseEntity;
+
 @RestController
 public class PersonController {
 
@@ -72,14 +74,7 @@ public class PersonController {
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<ErrorException> handleConstraintViolationException(ConstraintViolationException cve){
-        Map<String, String> errors = new HashMap<>();
-        cve.getConstraintViolations().forEach(error -> {
-            String fieldName = error.getMessage();
-            String name = error.toString();
-            errors.put(fieldName, name);
-        });
-        ErrorException errorException = new ErrorException(500, "Internal Server Error", errors);
-        return new ResponseEntity<>(errorException, HttpStatus.INTERNAL_SERVER_ERROR);
+        return getErrorExceptionResponseEntity(cve);
     }
 
     @ExceptionHandler(Exception.class)
