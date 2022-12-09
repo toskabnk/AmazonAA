@@ -1,6 +1,7 @@
-package com.svalero.AmazonAA.domain.dto;
+package com.svalero.AmazonAA.controller;
 
 import com.svalero.AmazonAA.domain.Inventory;
+import com.svalero.AmazonAA.domain.dto.InventoryDTO;
 import com.svalero.AmazonAA.exception.ErrorException;
 import com.svalero.AmazonAA.exception.InventoryNotFoundException;
 import com.svalero.AmazonAA.service.InventoryService;

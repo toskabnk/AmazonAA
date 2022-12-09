@@ -1,5 +1,7 @@
 package com.svalero.AmazonAA.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,6 +42,7 @@ public class Product {
     private List<Stock> inventories;
 
     @OneToMany(mappedBy = "productReview")
+    @JsonBackReference(value = "productId_product")
     private List<Review> reviews;
 
 }
