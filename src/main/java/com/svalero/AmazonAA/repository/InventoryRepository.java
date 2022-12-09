@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface InventoryRepository extends CrudRepository<Inventory, Long> {
     List<Inventory> findAll();
+    List<Inventory> findByAddressContainingIgnoreCase(String address);
+    List<Inventory> findByLocationContainingIgnoreCase(String location);
 }
