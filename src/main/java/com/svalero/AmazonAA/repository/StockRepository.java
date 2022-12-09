@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface StockRepository extends CrudRepository<Stock, Long> {
     List<Stock> findAll();
+    List<Stock> findByProductStock_Id(long productId);
+    List<Stock> findByInventoryStock_Id(long inventoryId);
 }

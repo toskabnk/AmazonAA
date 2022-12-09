@@ -1,5 +1,6 @@
 package com.svalero.AmazonAA.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,6 +40,7 @@ public class Inventory {
     private float totalValue;
 
     @OneToMany(mappedBy = "productStock")
+    @JsonBackReference(value = "productId_product")
     private List<Stock> productList;
 
 }

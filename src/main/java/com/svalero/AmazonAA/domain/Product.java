@@ -39,6 +39,7 @@ public class Product {
     private String category;
 
     @OneToMany(mappedBy = "inventoryStock")
+    @JsonBackReference(value = "inventoryId_inventory")
     private List<Stock> inventories;
 
     @OneToMany(mappedBy = "productReview")

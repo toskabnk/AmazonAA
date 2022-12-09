@@ -3,6 +3,7 @@ package com.svalero.AmazonAA.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Data
 @Entity(name = "stock")
@@ -21,5 +22,6 @@ public class Stock {
     private Inventory inventoryStock;
 
     @Column
+    @Min(value = 0)
     private int quantity;
 }
