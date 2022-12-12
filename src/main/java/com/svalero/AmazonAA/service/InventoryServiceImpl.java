@@ -6,8 +6,6 @@ import com.svalero.AmazonAA.domain.Stock;
 import com.svalero.AmazonAA.domain.dto.InventoryDTO;
 import com.svalero.AmazonAA.exception.InventoryNotFoundException;
 import com.svalero.AmazonAA.repository.InventoryRepository;
-import com.svalero.AmazonAA.repository.ProductRepository;
-import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +53,7 @@ public class InventoryServiceImpl implements InventoryService{
         inventory.setLastUpdate(LocalDate.now());
         float value = 0;
         for(Stock stock : inventory.getProductList()){
-            value =+ (stock.getQuantity() * stock.getProductStock().getPrice());
+            value += (stock.getQuantity() * stock.getProductStock().getPrice());
         }
         logger.info("Value Inventory: " + value);
         inventory.setTotalValue(value);

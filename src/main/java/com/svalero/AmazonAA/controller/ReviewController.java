@@ -103,7 +103,7 @@ public class ReviewController {
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<ErrorException> handleConstraintViolationException(ConstraintViolationException cve){
-        logger.error("Restriccion violadas");
+        logger.error("Restricciones violadas");
         return getErrorExceptionResponseEntity(cve);
     }
 

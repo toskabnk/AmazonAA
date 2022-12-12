@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +26,7 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    private Logger logger = LoggerFactory.getLogger(PersonController.class);
+    private final Logger logger = LoggerFactory.getLogger(PersonController.class);
 
     @GetMapping("/persons")
     public ResponseEntity<List<Person>> getPersons(@RequestParam Map<String,String> data){
@@ -98,7 +97,7 @@ public class PersonController {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorException> handleException(Exception e){
-        logger.error("Error Interno ", e.getMessage());
+        logger.error("Error Interno " + e.getMessage());
         ErrorException error = new ErrorException(500, e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }

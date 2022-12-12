@@ -98,7 +98,6 @@ public class InventoryController {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorException> handleException(Exception e){
         logger.error("Error Interno ", e.getMessage());
-        //Borrar el mensaje del error 500 luego
         ErrorException error = new ErrorException(500, "Ha habido algun error inesperado");
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }

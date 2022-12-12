@@ -1,7 +1,6 @@
 package com.svalero.AmazonAA.service;
 
 import com.svalero.AmazonAA.domain.Order;
-import com.svalero.AmazonAA.domain.Person;
 import com.svalero.AmazonAA.domain.dto.OrderDTO;
 import com.svalero.AmazonAA.exception.OrderNotFoundException;
 import com.svalero.AmazonAA.exception.PersonNotFoundException;

@@ -5,7 +5,6 @@ import com.svalero.AmazonAA.domain.dto.PersonDTO;
 import com.svalero.AmazonAA.exception.PersonNotFoundException;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface PersonService {
 

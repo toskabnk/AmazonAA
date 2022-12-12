@@ -95,7 +95,7 @@ public class ProductController {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorException> handleException(Exception e){
-        logger.error("Error Interno ", e.getMessage());
+        logger.error("Error Interno " + e.getMessage());
         ErrorException error = new ErrorException(500, e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }

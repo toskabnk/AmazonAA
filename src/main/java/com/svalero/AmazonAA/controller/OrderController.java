@@ -1,10 +1,7 @@
 package com.svalero.AmazonAA.controller;
 
 import com.svalero.AmazonAA.domain.Order;
-import com.svalero.AmazonAA.domain.Person;
-import com.svalero.AmazonAA.domain.Product;
 import com.svalero.AmazonAA.domain.dto.OrderDTO;
-import com.svalero.AmazonAA.domain.dto.PersonDTO;
 import com.svalero.AmazonAA.exception.ErrorException;
 import com.svalero.AmazonAA.exception.OrderNotFoundException;
 import com.svalero.AmazonAA.exception.PersonNotFoundException;
@@ -21,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -33,12 +29,6 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
-
-    @Autowired
-    private PersonService personService;
-
-    @Autowired
-    private ProductService productService;
 
     private  final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
@@ -111,7 +101,7 @@ public class OrderController {
 
     @ExceptionHandler(OrderNotFoundException.class)
     public ResponseEntity<ErrorException> handleOrderNotFoundException(OrderNotFoundException onfe){
-        logger.error("Order no enctrada");
+        logger.error("Order no encontrada");
         ErrorException errorException= new ErrorException(404, onfe.getMessage());
         return new ResponseEntity<>(errorException, HttpStatus.NOT_FOUND);
     }

@@ -16,14 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ProducServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService{
 
     @Autowired
     private ProductRepository productRepository;
     @Autowired
     ModelMapper modelMapper;
 
-    private final Logger logger = LoggerFactory.getLogger(ProducServiceImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
     @Override
     public List<Product> findAll() {
