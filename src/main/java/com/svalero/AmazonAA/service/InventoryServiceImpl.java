@@ -6,6 +6,7 @@ import com.svalero.AmazonAA.domain.Stock;
 import com.svalero.AmazonAA.domain.dto.InventoryDTO;
 import com.svalero.AmazonAA.exception.InventoryNotFoundException;
 import com.svalero.AmazonAA.repository.InventoryRepository;
+import com.svalero.AmazonAA.repository.StockRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class InventoryServiceImpl implements InventoryService{
 
     @Autowired
     private InventoryRepository inventoryRepository;
+
+    @Autowired
+    private StockRepository stockRepository;
 
     private final Logger logger = LoggerFactory.getLogger(InventoryServiceImpl.class);
 
@@ -50,13 +54,20 @@ public class InventoryServiceImpl implements InventoryService{
     public void updateInventory(long id) throws InventoryNotFoundException{
         logger.info("ID Inventory: " + id);
         Inventory inventory = inventoryRepository.findById(id).orElseThrow(InventoryNotFoundException::new);
-        inventory.setLastUpdate(LocalDate.now());
+        List<Stock> stocks = stockRepository.findByInventoryStock_Id(id);
+
         float value = 0;
-        for(Stock stock : inventory.getProductList()){
-            value += (stock.getQuantity() * stock.getProductStock().getPrice());
+
+        logger.info("Value Inventory pre-update: " + value);
+        for (Stock stock : stocks){
+            Product product = stock.getProductStock();
+            value += stock.getQuantity() * product.getPrice();
+            logger.info("Value iteration: " + value);
         }
-        logger.info("Value Inventory: " + value);
+
+        logger.info("--Bucle Start-- \nValue Inventory post update: " + value);
         inventory.setTotalValue(value);
+        inventoryRepository.save(inventory);
     }
 
     @Override

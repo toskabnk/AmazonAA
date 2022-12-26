@@ -3,6 +3,7 @@ package com.svalero.AmazonAA.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -30,10 +31,12 @@ public class Order {
     @Column
     private float totalPrice;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Person customer;

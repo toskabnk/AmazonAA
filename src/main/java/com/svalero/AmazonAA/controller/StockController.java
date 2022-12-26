@@ -108,7 +108,8 @@ public class StockController {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorException> handleException(Exception e){
         logger.error("Error interno " + e.getMessage());
-        ErrorException error = new ErrorException(500, e.getMessage());
+        e.printStackTrace();
+        ErrorException error = new ErrorException(500, "Ha ocurrido un error inesperado");
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

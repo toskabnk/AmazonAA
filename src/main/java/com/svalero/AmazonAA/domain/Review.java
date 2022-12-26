@@ -3,6 +3,7 @@ package com.svalero.AmazonAA.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -17,12 +18,13 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
+    @ToString.Exclude
     @NotNull
     @ManyToOne
     @JoinColumn(name = "customder_id")
     Person customerReview;
 
-
+    @ToString.Exclude
     @NotNull
     @ManyToOne
     @JoinColumn(name = "product_id")

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -39,6 +40,7 @@ public class Inventory {
     @Column
     private float totalValue;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "productStock")
     @JsonBackReference(value = "productId_product")
     private List<Stock> productList;

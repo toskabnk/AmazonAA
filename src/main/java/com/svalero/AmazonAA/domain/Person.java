@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -44,6 +45,7 @@ public class Person {
     @Column
     private LocalDate birthdate;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "customerReview")
     @JsonBackReference(value = "customerId_customer")
     private List<Review> reviews;
