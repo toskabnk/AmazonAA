@@ -1,10 +1,13 @@
 package com.svalero.AmazonAA.service;
 
+import com.svalero.AmazonAA.domain.Order;
 import com.svalero.AmazonAA.domain.Person;
 import com.svalero.AmazonAA.domain.Review;
 import com.svalero.AmazonAA.domain.dto.PersonDTO;
 import com.svalero.AmazonAA.exception.PersonNotFoundException;
+import com.svalero.AmazonAA.repository.OrderRepository;
 import com.svalero.AmazonAA.repository.PersonRepository;
+import com.svalero.AmazonAA.repository.ReviewRepository;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +22,12 @@ public class PersonServiceImpl implements PersonService{
 
     @Autowired
     private PersonRepository personRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -59,10 +68,18 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
-    public void deletePerson(long id) throws PersonNotFoundException {
+    public boolean deletePerson(long id) throws PersonNotFoundException {
         Person person = personRepository.findById(id).orElseThrow(PersonNotFoundException::new);
+        List<Order> order = orderRepository.findByCustomer_Id(person.getId());
+        List<Review> review = reviewRepository.findByCustomerReview(person);
+
+        if(!order.isEmpty() || !review.isEmpty()){
+            logger.error("Person " + person + " no se puede borrar ya que referencia a otras tablas en la base de datos, elimina esos datos antes.");
+            return false;
+        }
         logger.info("Deleted person:" + person);
         personRepository.delete(person);
+        return true;
     }
 
     @Override

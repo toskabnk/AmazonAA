@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
@@ -70,7 +71,7 @@ public class OrderController {
     }
 
     @PutMapping("/orders/{id}")
-    public ResponseEntity<Order> modifyOrder(@PathVariable long id, @RequestBody OrderDTO orderDTO) throws OrderNotFoundException, ProductNotFoundException{
+    public ResponseEntity<Order> modifyOrder(@PathVariable long id,@Valid @RequestBody OrderDTO orderDTO) throws OrderNotFoundException, ProductNotFoundException{
         logger.info("PUT Orders");
         Order newOrder = orderService.modifyOrder(id, orderDTO);
         logger.info("END PUT Orders");
@@ -117,6 +118,12 @@ public class OrderController {
         logger.error("Error Interno ", e.getMessage());
         ErrorException error = new ErrorException(500, "Ha habido algun error inesperado");
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorException> handleMethodArgumentNotValidException(MethodArgumentNotValidException manve){
+        logger.error("Datos introducidos erroneos");
+        return getErrorExceptionResponseEntity(manve);
     }
 
 }

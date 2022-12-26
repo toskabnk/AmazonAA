@@ -4,17 +4,23 @@ import com.svalero.AmazonAA.domain.Inventory;
 import com.svalero.AmazonAA.domain.Product;
 import com.svalero.AmazonAA.domain.Stock;
 import com.svalero.AmazonAA.domain.dto.InventoryDTO;
+import com.svalero.AmazonAA.exception.ErrorException;
 import com.svalero.AmazonAA.exception.InventoryNotFoundException;
 import com.svalero.AmazonAA.repository.InventoryRepository;
 import com.svalero.AmazonAA.repository.StockRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.svalero.AmazonAA.util.ErrorExceptionUtil.getErrorExceptionResponseEntity;
 
 @Service
 public class InventoryServiceImpl implements InventoryService{
@@ -86,10 +92,16 @@ public class InventoryServiceImpl implements InventoryService{
     }
 
     @Override
-    public void deleteInventory(long id) throws InventoryNotFoundException {
+    public boolean deleteInventory(long id) throws InventoryNotFoundException {
         Inventory inventory = inventoryRepository.findById(id).orElseThrow(InventoryNotFoundException::new);
+        List<Stock> stock = stockRepository.findByInventoryStock_Id(inventory.getId());
+        if(!stock.isEmpty()){
+            logger.error("Inventory " + inventory + " no se puede borrar ya que referencia a otras tablas en la base de datos, elimina esas referencias antes.");
+            return false;
+        }
         logger.info("Inventory deleted: " + inventory);
         inventoryRepository.delete(inventory);
+        return true;
     }
 
     @Override

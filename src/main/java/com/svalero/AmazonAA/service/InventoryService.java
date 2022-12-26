@@ -13,6 +13,6 @@ public interface InventoryService {
     List<Inventory> findByAddress(String address);
     void updateInventory(long id) throws InventoryNotFoundException;
     Inventory addInventory(InventoryDTO inventoryDTO);
-    void deleteInventory(long id) throws InventoryNotFoundException;
+    boolean deleteInventory(long id) throws InventoryNotFoundException;
     Inventory modifyInventory(long id, InventoryDTO inventoryDTO) throws InventoryNotFoundException;
 }

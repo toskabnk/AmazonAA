@@ -13,9 +13,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -51,7 +53,7 @@ public class StockController {
     }
 
     @PostMapping("/stocks")
-    public ResponseEntity<Stock> addStock(@RequestBody StockDTO stockDTO) throws InventoryNotFoundException, ProductNotFoundException {
+    public ResponseEntity<Stock> addStock(@Valid @RequestBody StockDTO stockDTO) throws InventoryNotFoundException, ProductNotFoundException {
         logger.info("POST Stock");
         Stock stock1 = stockService.addStock(stockDTO);
         inventoryService.updateInventory(stock1.getInventoryStock().getId());
@@ -60,7 +62,7 @@ public class StockController {
     }
 
     @PutMapping("/stocks/{id}")
-    public ResponseEntity<Stock> modifyStock(@PathVariable long id, @RequestBody StockDTO stockDTO) throws InventoryNotFoundException, StockNotFoundException, ProductNotFoundException {
+    public ResponseEntity<Stock> modifyStock(@PathVariable long id,@Valid @RequestBody StockDTO stockDTO) throws InventoryNotFoundException, StockNotFoundException, ProductNotFoundException {
         logger.info("PUT Stock");
         Stock stock1 = stockService.modifyStock(id, stockDTO);
         inventoryService.updateInventory(stock1.getInventoryStock().getId());
@@ -111,5 +113,11 @@ public class StockController {
         e.printStackTrace();
         ErrorException error = new ErrorException(500, "Ha ocurrido un error inesperado");
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorException> handleMethodArgumentNotValidException(MethodArgumentNotValidException manve){
+        logger.error("Datos introducidos erroneos");
+        return getErrorExceptionResponseEntity(manve);
     }
 }

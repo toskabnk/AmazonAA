@@ -4,12 +4,15 @@ import com.svalero.AmazonAA.domain.Person;
 import com.svalero.AmazonAA.domain.dto.PersonDTO;
 import com.svalero.AmazonAA.exception.ErrorException;
 import com.svalero.AmazonAA.exception.PersonNotFoundException;
+import com.svalero.AmazonAA.service.OrderService;
 import com.svalero.AmazonAA.service.PersonService;
+import com.svalero.AmazonAA.service.ReviewService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
@@ -67,7 +70,7 @@ public class PersonController {
     }
 
     @PutMapping("/persons/{id}")
-    public ResponseEntity<Person> modifyPerson(@PathVariable long id, @RequestBody Person person) throws PersonNotFoundException{
+    public ResponseEntity<Person> modifyPerson(@PathVariable long id,@Valid @RequestBody Person person) throws PersonNotFoundException{
         logger.info("PUT Person");
         Person newPerson = personService.modifyPerson(id, person);
         logger.info("END PUT Person");
@@ -75,11 +78,17 @@ public class PersonController {
     }
 
     @DeleteMapping("/persons/{id}")
-    public ResponseEntity<Void> detelePerson(@PathVariable long id) throws PersonNotFoundException{
+    public ResponseEntity<ErrorException> detelePerson(@PathVariable long id) throws PersonNotFoundException{
         logger.info("DELETE Person");
-        personService.deletePerson(id);
+
+        boolean result = personService.deletePerson(id);
         logger.info("END DELETE Person");
-        return ResponseEntity.noContent().build();
+        if(result){
+            return ResponseEntity.noContent().build();
+        } else {
+            ErrorException error = new ErrorException(403, "El borrado no se ha permitido.");
+            return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
+        }
     }
 
     @ExceptionHandler(PersonNotFoundException.class)
@@ -98,9 +107,14 @@ public class PersonController {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorException> handleException(Exception e){
         logger.error("Error Interno " + e.getMessage());
-        ErrorException error = new ErrorException(500, e.getMessage());
+        ErrorException error = new ErrorException(500, "Ha ocurrido un error inesperado.");
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorException> handleMethodArgumentNotValidException(MethodArgumentNotValidException manve){
+        logger.error("Datos introducidos erroneos");
+        return getErrorExceptionResponseEntity(manve);
+    }
 
 }

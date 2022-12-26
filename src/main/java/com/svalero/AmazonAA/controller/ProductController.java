@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
@@ -65,7 +66,7 @@ public class ProductController {
     }
 
     @PutMapping("/products/{id}")
-    public ResponseEntity<Product> modifyProduct(@PathVariable long id, @RequestBody Product product) throws ProductNotFoundException{
+    public ResponseEntity<Product> modifyProduct(@PathVariable long id,@Valid @RequestBody Product product) throws ProductNotFoundException{
         logger.info("PUT Products");
         Product newProduct = productService.modifyProduct(id, product);
         logger.info("END PUT Products");
@@ -73,11 +74,17 @@ public class ProductController {
     }
 
     @DeleteMapping("/products/{id}")
-    public ResponseEntity<Void> deteleProduct(@PathVariable long id) throws ProductNotFoundException{
+    public ResponseEntity<ErrorException> deleteProduct(@PathVariable long id) throws ProductNotFoundException{
         logger.info("DELETE Products");
-        productService.deteleProduct(id);
+        boolean result = productService.deteleProduct(id);
         logger.info("END DELETE Products");
-        return ResponseEntity.noContent().build();
+        if(result){
+            return ResponseEntity.noContent().build();
+        } else {
+            ErrorException error = new ErrorException(418, "El borrado no se ha permitido.");
+            return new ResponseEntity<>(error, HttpStatus.I_AM_A_TEAPOT);
+        }
+
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
@@ -98,5 +105,11 @@ public class ProductController {
         logger.error("Error Interno " + e.getMessage());
         ErrorException error = new ErrorException(500, e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorException> handleMethodArgumentNotValidException(MethodArgumentNotValidException manve){
+        logger.error("Datos introducidos erroneos");
+        return getErrorExceptionResponseEntity(manve);
     }
 }

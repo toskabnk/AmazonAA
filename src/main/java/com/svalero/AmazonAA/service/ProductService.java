@@ -16,6 +16,6 @@ public interface ProductService {
     List<Product> findByCategory(String category);
 
     Product addProduct(ProductDTO productDTO);
-    void deteleProduct(long id) throws ProductNotFoundException;
+    boolean deteleProduct(long id) throws ProductNotFoundException;
     Product modifyProduct(long id, Product newProduct) throws ProductNotFoundException;
 }

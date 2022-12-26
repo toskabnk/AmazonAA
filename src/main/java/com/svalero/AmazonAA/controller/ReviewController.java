@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
@@ -65,7 +66,7 @@ public class ReviewController {
     }
 
     @PutMapping("/reviews/{id}")
-    public ResponseEntity<Review> modifyReview(@PathVariable long id, @RequestBody ModifyReviewDTO modifyReviewDTO) throws ReviewNotFoundException {
+    public ResponseEntity<Review> modifyReview(@PathVariable long id,@Valid @RequestBody ModifyReviewDTO modifyReviewDTO) throws ReviewNotFoundException {
         logger.info("PUT Review");
         Review review = reviewService.modifyReview(id, modifyReviewDTO);
         logger.info("END PUT Review");
@@ -114,6 +115,10 @@ public class ReviewController {
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorException> handleMethodArgumentNotValidException(MethodArgumentNotValidException manve){
+        logger.error("Datos introducidos erroneos");
+        return getErrorExceptionResponseEntity(manve);
+    }
 
 }

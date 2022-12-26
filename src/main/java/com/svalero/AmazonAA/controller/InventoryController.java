@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
@@ -67,7 +68,7 @@ public class InventoryController {
     }
 
     @PutMapping("/inventories/{id}")
-    public ResponseEntity<Inventory> modifyInventory(@PathVariable long id, @RequestBody InventoryDTO inventoryDTO) throws InventoryNotFoundException{
+    public ResponseEntity<Inventory> modifyInventory(@PathVariable long id,@Valid @RequestBody InventoryDTO inventoryDTO) throws InventoryNotFoundException{
         logger.error("PUT Inventories");
         Inventory inventory = inventoryService.modifyInventory(id, inventoryDTO);
         logger.error("END PUT Inventories");
@@ -75,11 +76,18 @@ public class InventoryController {
     }
 
     @DeleteMapping("inventories/{id}")
-    public ResponseEntity<Void> deleteInventory(@PathVariable long id) throws InventoryNotFoundException{
+    public ResponseEntity<ErrorException> deleteInventory(@PathVariable long id) throws InventoryNotFoundException{
         logger.error("DELETE Inventories");
-        inventoryService.deleteInventory(id);
+        boolean result = inventoryService.deleteInventory(id);
         logger.error("END DELETE Inventories");
-        return ResponseEntity.noContent().build();
+        if(result){
+            return ResponseEntity.noContent().build();
+        } else {
+        ErrorException error = new ErrorException(403, "El borrado no se ha permitido.");
+        return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
+    }
+
+
     }
 
     @ExceptionHandler(InventoryNotFoundException.class)
@@ -100,5 +108,11 @@ public class InventoryController {
         logger.error("Error Interno ", e.getMessage());
         ErrorException error = new ErrorException(500, "Ha habido algun error inesperado");
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorException> handleMethodArgumentNotValidException(MethodArgumentNotValidException manve){
+        logger.error("Datos introducidos erroneos");
+        return getErrorExceptionResponseEntity(manve);
     }
 }

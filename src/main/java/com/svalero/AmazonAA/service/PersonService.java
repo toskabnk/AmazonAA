@@ -16,7 +16,7 @@ public interface PersonService {
     Person findByUserName(String username);
 
     Person addPerson(PersonDTO personDTO);
-    void deletePerson(long id) throws  PersonNotFoundException;
+    boolean deletePerson(long id) throws  PersonNotFoundException;
     Person modifyPerson(long id, Person newPerson) throws PersonNotFoundException;
 
 }
