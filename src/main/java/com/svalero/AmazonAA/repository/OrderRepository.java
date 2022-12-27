@@ -10,5 +10,6 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
     List<Order> findAll();
     List<Order> findByCustomer_Id(long id);
     List<Order> findByProduct_Id(long id);
+    List<Order> findByPaidEquals(boolean paid);
 
 }

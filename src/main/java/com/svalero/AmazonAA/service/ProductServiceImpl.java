@@ -62,6 +62,12 @@ public class ProductServiceImpl implements ProductService{
         return productRepository.findByCategory(category);
     }
 
+    @Override
+    public List<Product> findByDescription(String description) {
+        logger.info("Description Product: " + description);
+        return productRepository.findByDescriptionContainingIgnoreCase(description);
+    }
+
 
     @Override
     public Product addProduct(ProductDTO productDTO) {

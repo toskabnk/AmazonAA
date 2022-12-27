@@ -43,6 +43,10 @@ public class ProductController {
                 List<Product> products = productService.findByCategory(data.get("category"));
                 logger.info("END GET Products");
                 return ResponseEntity.ok(products);
+            } else if(data.containsKey("description")){
+                List<Product> products = productService.findByDescription(data.get("description"));
+                logger.info("END GET Products");
+                return ResponseEntity.ok(products);
             }
         }
         logger.error("BAD REQUEST");

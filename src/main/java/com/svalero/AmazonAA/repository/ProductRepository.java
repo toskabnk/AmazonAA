@@ -10,5 +10,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     List<Product> findAll();
     List<Product> findByNameContaining(String name);
     List<Product> findByCategory(String category);
+    List<Product> findByDescriptionContainingIgnoreCase(String description);
 
 }

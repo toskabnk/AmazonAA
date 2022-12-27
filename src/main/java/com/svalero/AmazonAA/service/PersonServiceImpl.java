@@ -57,6 +57,12 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
+    public List<Person> findByPhoneNumber(String phoneNumber) {
+        logger.info("PhoneNumber Person: " + phoneNumber);
+        return personRepository.findByPhoneNumberEquals(phoneNumber);
+    }
+
+    @Override
     public Person addPerson(PersonDTO personDTO) {
         logger.info("Person added: " + personDTO);
         Person newPerson = new Person();

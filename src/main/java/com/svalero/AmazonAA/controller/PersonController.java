@@ -47,6 +47,11 @@ public class PersonController {
                 persons.add(personService.findByUserName(data.get("username")));
                 logger.info("GET Person");
                 return ResponseEntity.ok(persons);
+            } else if(data.containsKey("phoneNumber")){
+                List<Person> persons = new ArrayList<>();
+                persons = personService.findByPhoneNumber(data.get("phoneNumber"));
+                logger.info("GET Person");
+                return ResponseEntity.ok(persons);
             }
         }
         logger.error("Bad Request");

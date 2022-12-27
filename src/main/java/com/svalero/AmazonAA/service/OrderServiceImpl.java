@@ -60,6 +60,12 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    public List<Order> findByPaid(boolean paid){
+        List<Order> orders = orderRepository.findByPaidEquals(paid);
+        return orders;
+    }
+
+    @Override
     public Order addOrder(OrderDTO orderDTO) throws PersonNotFoundException, ProductNotFoundException {
         logger.info("Order added: " + orderDTO);
         Order newOrder = new Order();

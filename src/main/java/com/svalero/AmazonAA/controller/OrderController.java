@@ -48,6 +48,19 @@ public class OrderController {
                 List<Order> orders = orderService.findByProductId(Long.parseLong(data.get("product")));
                 logger.info("END GET Orders");
                 return ResponseEntity.ok(orders);
+            } else if(data.containsKey("paid")){
+                if(data.get("paid").equals("true")){
+                    List<Order> orders = orderService.findByPaid(Boolean.TRUE);
+                    logger.info("END GET Orders");
+                    return ResponseEntity.ok(orders);
+                } else if(data.get("paid").equals("false")){
+                    List<Order> orders = orderService.findByPaid(Boolean.FALSE);
+                    logger.info("END GET Orders");
+                    return ResponseEntity.ok(orders);
+                } else{
+                    logger.error("BAD REQUEST");
+                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                }
             }
         }
         logger.error("BAD REQUEST");
@@ -115,7 +128,7 @@ public class OrderController {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorException> handleException(Exception e){
-        logger.error("Error Interno ", e.getMessage());
+        logger.error("Error Interno " + e.getMessage());
         ErrorException error = new ErrorException(500, "Ha habido algun error inesperado");
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }

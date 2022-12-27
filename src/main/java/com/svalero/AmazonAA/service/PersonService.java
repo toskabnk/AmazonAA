@@ -14,7 +14,7 @@ public interface PersonService {
     List<Person> findByName(String name);
 
     Person findByUserName(String username);
-
+    List<Person> findByPhoneNumber(String phoneNumber);
     Person addPerson(PersonDTO personDTO);
     boolean deletePerson(long id) throws  PersonNotFoundException;
     Person modifyPerson(long id, Person newPerson) throws PersonNotFoundException;

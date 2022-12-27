@@ -13,7 +13,7 @@ public interface OrderService {
     Order findById(long id) throws OrderNotFoundException;
     List<Order> findByPersonUsername(String username) throws PersonNotFoundException;
     List<Order> findByProductId(long id) throws ProductNotFoundException;
-
+    List<Order> findByPaid(boolean paid);
     Order addOrder(OrderDTO orderDTO) throws PersonNotFoundException, ProductNotFoundException;
     void deleteOrder(long id) throws OrderNotFoundException;
     Order modifyOrder(long id, OrderDTO orderDTO) throws OrderNotFoundException, ProductNotFoundException;
