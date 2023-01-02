@@ -1,52 +1,27 @@
-package com.svalero.AmazonAA.domain;
+package com.svalero.AmazonAA.domain.dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "person")
-public class Person {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-    @Column
+@AllArgsConstructor
+public class PersonDTO {
     @NotBlank(message = "El nombre no puede estar vacio")
     @NotNull(message = "El nombre es obligatorio")
     private String name;
-
-    @Column(unique = true)
     @NotBlank(message = "El nombre de usuario no puede estar vacio")
     @NotNull(message = "El nombre de usuario es obligatorio")
     private String username;
-
     @NotBlank(message = "La contraseña no puede estar vacia")
     @NotNull(message = "La contraseña es obligatoria")
     private String password;
-
-    @Column
     private String address;
-
-    @Column
     private String phoneNumber;
-
-    @Column
     private LocalDate birthdate;
-
-    @ToString.Exclude
-    @OneToMany(mappedBy = "customerReview")
-    @JsonBackReference(value = "customerId_customer")
-    private List<Review> reviews;
 }
