@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.svalero</groupId>
 	<artifactId>AmazonAA</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>AmazonAA</name>
 	<description>Actividad de Aprendizaje de Acceso a Datos</description>
 	<properties>
