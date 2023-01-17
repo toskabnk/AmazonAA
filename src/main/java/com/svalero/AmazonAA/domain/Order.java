@@ -1,5 +1,6 @@
 package com.svalero.AmazonAA.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,4 +41,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Person customer;
+
+    @ToString.Exclude
+    @JsonBackReference(value = "orderId_oder")
+    @OneToOne(mappedBy = "order")
+    private Shipping shipping;
 }
