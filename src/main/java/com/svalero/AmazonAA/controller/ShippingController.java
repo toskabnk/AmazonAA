@@ -36,7 +36,7 @@ public class ShippingController {
             return ResponseEntity.ok(shippingService.findAll());
         } else {
             if(data.containsKey("carrier")){
-                List<Shipping> shippings = shippingService.findByCarrierContainingIgnoreCase(data.get("carruer"));
+                List<Shipping> shippings = shippingService.findByCarrierContainingIgnoreCase(data.get("carrier"));
                 return ResponseEntity.ok(shippings);
             }
         }
