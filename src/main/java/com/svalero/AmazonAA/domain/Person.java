@@ -12,6 +12,7 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -45,8 +46,15 @@ public class Person {
     @Column
     private LocalDate birthdate;
 
+    @Column(name = "active")
+    private boolean active = true;
+
     @ToString.Exclude
     @OneToMany(mappedBy = "customerReview")
     @JsonBackReference(value = "customerId_customer")
     private List<Review> reviews;
+
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 }

@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -65,10 +66,12 @@ public class PersonServiceImpl implements PersonService{
     @Override
     public Person addPerson(PersonDTO personDTO) {
         logger.info("Person added: " + personDTO);
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         Person newPerson = new Person();
 
         modelMapper.map(personDTO, newPerson);
         newPerson.setReviews(new ArrayList<>());
+        newPerson.setPassword(bCryptPasswordEncoder.encode(personDTO.getPassword()));
 
         return personRepository.save(newPerson);
     }
@@ -90,11 +93,13 @@ public class PersonServiceImpl implements PersonService{
 
     @Override
     public Person modifyPerson(long id, Person newPerson) throws PersonNotFoundException {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         Person existingPerson = personRepository.findById(id).orElseThrow(PersonNotFoundException::new);
         logger.info("Existing Person: " + existingPerson);
         logger.info("New Person " + newPerson);
         List<Review> reviews = existingPerson.getReviews();
         modelMapper.map(newPerson, existingPerson);
+        existingPerson.setPassword(bCryptPasswordEncoder.encode(newPerson.getPassword()));
         existingPerson.setId(id);
         existingPerson.setReviews(reviews);
         return personRepository.save(existingPerson);
