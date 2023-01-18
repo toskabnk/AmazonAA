@@ -4,6 +4,7 @@ import com.svalero.AmazonAA.domain.Order;
 import com.svalero.AmazonAA.domain.Shipping;
 import com.svalero.AmazonAA.domain.dto.ShippingDTO;
 import com.svalero.AmazonAA.exception.OrderNotFoundException;
+import com.svalero.AmazonAA.exception.PersonNotFoundException;
 import com.svalero.AmazonAA.exception.ShippingNotFoundException;
 import com.svalero.AmazonAA.exception.ShippingWithOrderAlreadyExist;
 
@@ -17,4 +18,5 @@ public interface ShippingService {
     Shipping addShipping(ShippingDTO shippingDTO) throws OrderNotFoundException, ShippingWithOrderAlreadyExist;
     Shipping modifyShipping(long id, ShippingDTO shippingDTO) throws ShippingNotFoundException, OrderNotFoundException;
     void deleteShipping(long id) throws ShippingNotFoundException;
+    List<Shipping> findDeliveredByUser(long userId) throws PersonNotFoundException;
 }

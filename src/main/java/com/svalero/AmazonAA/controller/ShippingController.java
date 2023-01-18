@@ -2,10 +2,7 @@ package com.svalero.AmazonAA.controller;
 
 import com.svalero.AmazonAA.domain.Shipping;
 import com.svalero.AmazonAA.domain.dto.ShippingDTO;
-import com.svalero.AmazonAA.exception.ErrorException;
-import com.svalero.AmazonAA.exception.OrderNotFoundException;
-import com.svalero.AmazonAA.exception.ShippingNotFoundException;
-import com.svalero.AmazonAA.exception.ShippingWithOrderAlreadyExist;
+import com.svalero.AmazonAA.exception.*;
 import com.svalero.AmazonAA.service.ShippingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +41,12 @@ public class ShippingController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+    @GetMapping("/shipping/delivered/{id}")
+    public ResponseEntity<List<Shipping>> getShippingsDeliveredByUser(@PathVariable long id) throws PersonNotFoundException {
+        List<Shipping> shippings = shippingService.findDeliveredByUser(id);
+        return ResponseEntity.status(HttpStatus.OK).body(shippings);
+    }
+
     @PostMapping("/shipping")
     public ResponseEntity<Shipping> addShipping(@Valid @RequestBody ShippingDTO shippingDTO) throws OrderNotFoundException, ShippingWithOrderAlreadyExist {
         Shipping shipping = shippingService.addShipping(shippingDTO);
@@ -80,6 +83,13 @@ public class ShippingController {
     public ResponseEntity<ErrorException> handleOrderNotFoundException(OrderNotFoundException onfe){
         logger.error("Order no encontrada");
         ErrorException errorException= new ErrorException(404, onfe.getMessage());
+        return new ResponseEntity<>(errorException, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(PersonNotFoundException.class)
+    public ResponseEntity<ErrorException> handlePersonNotFoundException(PersonNotFoundException pnfe){
+        logger.error("Person no encontrado");
+        ErrorException errorException= new ErrorException(404, pnfe.getMessage());
         return new ResponseEntity<>(errorException, HttpStatus.NOT_FOUND);
     }
 

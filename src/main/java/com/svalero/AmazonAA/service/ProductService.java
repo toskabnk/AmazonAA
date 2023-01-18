@@ -18,4 +18,5 @@ public interface ProductService {
     Product addProduct(ProductDTO productDTO);
     boolean deteleProduct(long id) throws ProductNotFoundException;
     Product modifyProduct(long id, Product newProduct) throws ProductNotFoundException;
+    List<Product> findSoldOut();
 }

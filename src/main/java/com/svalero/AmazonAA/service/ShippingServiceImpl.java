@@ -1,12 +1,15 @@
 package com.svalero.AmazonAA.service;
 
 import com.svalero.AmazonAA.domain.Order;
+import com.svalero.AmazonAA.domain.Person;
 import com.svalero.AmazonAA.domain.Shipping;
 import com.svalero.AmazonAA.domain.dto.ShippingDTO;
 import com.svalero.AmazonAA.exception.OrderNotFoundException;
+import com.svalero.AmazonAA.exception.PersonNotFoundException;
 import com.svalero.AmazonAA.exception.ShippingNotFoundException;
 import com.svalero.AmazonAA.exception.ShippingWithOrderAlreadyExist;
 import com.svalero.AmazonAA.repository.OrderRepository;
+import com.svalero.AmazonAA.repository.PersonRepository;
 import com.svalero.AmazonAA.repository.ShippingRepository;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -24,6 +27,9 @@ public class ShippingServiceImpl implements ShippingService{
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private PersonRepository personRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -94,5 +100,12 @@ public class ShippingServiceImpl implements ShippingService{
     public void deleteShipping(long id) throws ShippingNotFoundException {
         Shipping existingShipping = shippingRepository.findById(id).orElseThrow(ShippingNotFoundException::new);
         shippingRepository.delete(existingShipping);
+    }
+
+    @Override
+    public List<Shipping> findDeliveredByUser(long userId) throws PersonNotFoundException {
+        Person person = personRepository.findById(userId).orElseThrow(PersonNotFoundException::new);
+        List<Shipping> shippings = shippingRepository.findDeliveredByUser(person.getId());
+        return shippings;
     }
 }

@@ -104,4 +104,9 @@ public class PersonServiceImpl implements PersonService{
         existingPerson.setReviews(reviews);
         return personRepository.save(existingPerson);
     }
+
+    @Override
+    public List<Person> findNotPaidPersons() {
+        return personRepository.findNotPaidPersons();
+    }
 }

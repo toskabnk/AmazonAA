@@ -61,6 +61,12 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
+    @GetMapping("/products/soldOut")
+    public ResponseEntity<List<Product>> getSoldOutProducts(){
+        List<Product> products = productService.findSoldOut();
+        return ResponseEntity.ok(products);
+    }
+
     @PostMapping("/products")
     public ResponseEntity<Product> addProduct(@Valid @RequestBody ProductDTO productDTO){
         logger.info("POST Products");

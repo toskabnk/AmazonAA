@@ -66,6 +66,14 @@ public class PersonController {
         return ResponseEntity.ok(person);
     }
 
+    @GetMapping("/persons/notPaid/")
+    public ResponseEntity<List<Person>> getNotPaidPersons() {
+        logger.info("GET Person");
+        List<Person> person = personService.findNotPaidPersons();
+        logger.info("END GET Person");
+        return ResponseEntity.ok(person);
+    }
+
     @PostMapping("/persons")
     public ResponseEntity<Person> addPerson(@Valid @RequestBody PersonDTO personDTO){
         logger.info("POST Person");

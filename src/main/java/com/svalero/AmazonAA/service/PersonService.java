@@ -18,5 +18,6 @@ public interface PersonService {
     Person addPerson(PersonDTO personDTO);
     boolean deletePerson(long id) throws  PersonNotFoundException;
     Person modifyPerson(long id, Person newPerson) throws PersonNotFoundException;
+    List<Person> findNotPaidPersons();
 
 }
