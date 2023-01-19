@@ -16,7 +16,14 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -131,6 +138,26 @@
 					"response": []
 				},
 				{
+					"name": "persons/notPaid/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/persons/notPaid/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persons",
+								"notPaid",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "persons",
 					"request": {
 						"method": "POST",
@@ -164,7 +191,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Modificado\",\r\n    \"username\":\"Modificado1\",\r\n    \"password\":\"Modificado2\",\r\n    \"address\":\"Modificado3\",\r\n    \"phoneNumber\":\"Modificado4\",\r\n    \"birthdate\":null\r\n}\r\n",
+							"raw": "{\r\n\r\n    \"name\": \"Antonio\",\r\n    \"username\": \"SrAtonio\",\r\n    \"password\": \"1234\",\r\n    \"address\": \"Avd Andalucia\",\r\n    \"phoneNumber\": \"123456789\",\r\n    \"birthdate\": null\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -203,6 +230,36 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
@@ -319,6 +376,25 @@
 					"response": []
 				},
 				{
+					"name": "/products/soldOut",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/products/soldOut",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"soldOut"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "products",
 					"request": {
 						"method": "POST",
@@ -400,6 +476,36 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
@@ -570,6 +676,36 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -738,6 +874,36 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
@@ -908,6 +1074,36 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -956,7 +1152,7 @@
 					"response": []
 				},
 				{
-					"name": "stocks/?inventoriesId",
+					"name": "stocks?inventoriesId",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1052,6 +1248,480 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Shipping",
+			"item": [
+				{
+					"name": "shipping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/shipping",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shipping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "shipping?carrier",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/shipping?carrier=DHL",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shipping"
+							],
+							"query": [
+								{
+									"key": "carrier",
+									"value": "DHL"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/shipping/delivered/{personId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/shipping/delivered/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shipping",
+								"delivered",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "shipping",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"carrier\":\"DHL\",\r\n    \"estimatedArrival\":\"2023-01-30\",\r\n    \"tracking\":\"AAA0000001\",\r\n    \"status\":\"in transit\",\r\n    \"orderId\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/shipping",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shipping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "shipping/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/shipping/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shipping",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "shipping/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"carrier\":\"SEUR\",\r\n    \"estimatedArrival\":\"2024-01-30\",\r\n    \"tracking\":\"AAA0000002\",\r\n    \"status\":\"problems\",\r\n    \"orderId\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/shipping/33",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shipping",
+								"33"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Security",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"AntonioTokenJWT\",\r\n    \"username\":\"SrAntonioJWT\",\r\n    \"password\":\"1234\",\r\n    \"address\":\"Avd Andalucia\",\r\n    \"phoneNumber\":\"999999999\",\r\n    \"birthdate\":\"1990-01-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"SrAntonioJWT\",\r\n    \"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/token",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Public Request (No Auth)",
+			"item": [
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/products",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "products/{id}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/products/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "products?name",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/products?name=Papel",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Papel"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "products?category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/products?category=Hogar",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": "Hogar"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "products?description",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/products?description=PALOS",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "description",
+											"value": "PALOS"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Review",
+					"item": [
+						{
+							"name": "reviews",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/reviews",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviews?productId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/reviews?productId=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"reviews"
+									],
+									"query": [
+										{
+											"key": "productId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviews=customerId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/reviews?customerId=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"reviews"
+									],
+									"query": [
+										{
+											"key": "customerId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviews?id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/reviews?id=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"reviews"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}

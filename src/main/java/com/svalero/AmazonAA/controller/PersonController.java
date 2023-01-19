@@ -4,9 +4,7 @@ import com.svalero.AmazonAA.domain.Person;
 import com.svalero.AmazonAA.domain.dto.PersonDTO;
 import com.svalero.AmazonAA.exception.ErrorException;
 import com.svalero.AmazonAA.exception.PersonNotFoundException;
-import com.svalero.AmazonAA.service.OrderService;
 import com.svalero.AmazonAA.service.PersonService;
-import com.svalero.AmazonAA.service.ReviewService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +61,14 @@ public class PersonController {
         logger.info("GET Person");
         Person person = personService.findById(id);
         logger.info("END GET Person");
+        return ResponseEntity.ok(person);
+    }
+
+    @GetMapping("/persons/notPaid/")
+    public ResponseEntity<List<Person>> getNotPaidPersons() {
+        logger.info("GET notPaidPerson");
+        List<Person> person = personService.findNotPaidPersons();
+        logger.info("END GET notPaidPerson");
         return ResponseEntity.ok(person);
     }
 

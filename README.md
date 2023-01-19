@@ -10,11 +10,11 @@
 ### Requisitos opcionales:
 - [ ] Añade una operación PATCH para cada una de las clases del modelo
 - [x] Utiliza la herramienta Git (y GitHub) durante todo el desarrollo de la aplicación. Escribe el fichero README.md para explicar cómo poner en marcha el proyecto. Utiliza el gestor de Issues para los problemas/fallos que vayan surgiendo
-- [ ] Añade 3 nuevos endpoints a la aplicación (sin repetir método) que realicen nuevas operaciones con los datos y que requieran el uso de DTOs y/o utilizar las relaciones entre las clases
-- [ ] Securiza algunas de tus operaciones de la API con un token JWT
+- [x] Añade 3 nuevos endpoints a la aplicación (sin repetir método) que realicen nuevas operaciones con los datos y que requieran el uso de DTOs y/o utilizar las relaciones entre las clases
+- [x] Securiza algunas de tus operaciones de la API con un token JWT
 - [ ] Añade 3 operaciones que utilicen consultas JPQL para extraer la información de la base de datos
-- [ ] Añade 3 operaciones que utilicen consultas SQL nativas para extraer la información de la base de datos
-- [ ] Añade 2 clases más al modelo de datos con sus respectivas operaciones CRUD (inclúyelas también en la colección Postman)
+- [x] Añade 3 operaciones que utilicen consultas SQL nativas para extraer la información de la base de datos
+- [x] Añade 2 clases más al modelo de datos con sus respectivas operaciones CRUD (inclúyelas también en la colección Postman)
 - [ ] Parametriza la colección Postman para que pueda ser ejecutada con el Runner de Postman y realizar una prueba completa de la API
 
 ### Como ejecutar la aplicacion:
@@ -23,4 +23,7 @@
 - Descarga el codigo fuente del proyecto
 - Importa el codigo en el IDE de tu preferencia
 - Ejecuta en el terminal de tu IDE el comando `mvn spring-boot:run`
-- Si todo ha ido correctamente, la aplicacion deberia estar funcionando correctamente y puedes probar los endpoints de la API en Postman o cualquier otra aplicacion similar
+- Los metodos GET de Product y Review son publicos. Asi como `/token` y `/register`. Todo lo demas necesita autorizacion
+- Si todo ha ido correctamente, la aplicacion deberia estar funcionando correctamente, primero registrate usando `/register` y luego consigue tu token con `/token`
+- Añade el token a la cabecera Authorization de las peticiones añadiendo `Bearer MI_TOKEN`, si usas POSTMAN, solo tienes que guardar el token una variable global llamada `token`, la cabecere de Autenticacion se añadira automaticamente.
+- Ya puedes probar los endpoints de la API en Postman o cualquier otra aplicacion similar

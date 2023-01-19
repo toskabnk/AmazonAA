@@ -109,4 +109,9 @@ public class ProductServiceImpl implements ProductService{
         existingProduct.setReviews(reviews);
         return productRepository.save(existingProduct);
     }
+
+    @Override
+    public List<Product> findSoldOut() {
+        return productRepository.findSoldOut();
+    }
 }
