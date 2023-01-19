@@ -23,4 +23,7 @@
 - Descarga el codigo fuente del proyecto
 - Importa el codigo en el IDE de tu preferencia
 - Ejecuta en el terminal de tu IDE el comando `mvn spring-boot:run`
-- Si todo ha ido correctamente, la aplicacion deberia estar funcionando correctamente y puedes probar los endpoints de la API en Postman o cualquier otra aplicacion similar
+- Los metodos GET de Product y Review son publicos. Asi como `/token` y `/register`. Todo lo demas necesita autorizacion
+- Si todo ha ido correctamente, la aplicacion deberia estar funcionando correctamente, primero registrate usando `/register` y luego consigue tu token con `/token`
+- Añade el token a la cabecera Authorization de las peticiones añadiendo `Bearer MI_TOKEN`, si usas POSTMAN, solo tienes que guardar el token una variable global llamada `token`, la cabecere de Autenticacion se añadira automaticamente.
+- Ya puedes probar los endpoints de la API en Postman o cualquier otra aplicacion similar
