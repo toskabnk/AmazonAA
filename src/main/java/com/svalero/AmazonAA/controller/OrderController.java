@@ -7,8 +7,6 @@ import com.svalero.AmazonAA.exception.OrderNotFoundException;
 import com.svalero.AmazonAA.exception.PersonNotFoundException;
 import com.svalero.AmazonAA.exception.ProductNotFoundException;
 import com.svalero.AmazonAA.service.OrderService;
-import com.svalero.AmazonAA.service.PersonService;
-import com.svalero.AmazonAA.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,26 +1,22 @@
 package com.svalero.AmazonAA.controller;
 
-import com.svalero.AmazonAA.domain.Person;
 import com.svalero.AmazonAA.domain.dto.PersonDTO;
 import com.svalero.AmazonAA.domain.dto.PersonLoginDTO;
 import com.svalero.AmazonAA.security.JwtResponse;
 import com.svalero.AmazonAA.security.JwtUtils;
 import com.svalero.AmazonAA.service.PersonService;
-import io.jsonwebtoken.impl.DefaultClaims;
-import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
