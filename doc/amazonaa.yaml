@@ -1,0 +1,1551 @@
+openapi: 3.0.3
+info:
+  title: AmazonAA
+  description: Actividad de Aprendizaje de Acceso a Datos
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+tags:
+  - name: person
+    description: Operaciones con usuarios de la aplicacion
+  - name: product
+    description: Operaciones con los productos de la aplicacion
+  - name: order
+    description: Operaciones con los pedidos de la aplicacion
+  - name: inventory
+    description: Operaciones con los almacenes de la aplicacion
+  - name: review
+    description: Operaciones con las reviews de los productos de los usuarios
+  - name: stock
+    description: Operaciones con el inventario de los almacenes de la aplicacion
+  - name: shipping
+    description: Operaciones con los envios de los pedidos de la aplicacion
+  - name: security
+    description: Operaciones para el registro y login con token en la aplicacion
+paths:
+  /persons:
+    get:
+      tags:
+        - person
+      summary: Lista de todos los usuarios
+      description: Obtiene la lista de los usuarios registrados en la aplicacion. Solo un parametro por peticion.
+      operationId: persons
+      parameters:
+        - name: id
+          in: path
+          description: Obtiene el usuario que tenga el id pasado por parametro
+          required: false
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Devuelve una lista de usuarios que contengan el nombre pasado por parametro
+          required: false
+          schema:
+            type: integer
+        - name: username
+          in: query
+          description: Obtiene el usuario que tenga el nombre de usuario pasado por parametro
+          required: false
+          schema:
+            type: integer
+        - name: phoneNumber
+          in: query
+          description: Obtiene el usuario que tenga el numero de telefono pasado por parametro
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/person'
+        '400':
+          description: Bad Request - URL o parametros mal introducidos
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '404':
+          description: Persona no encontrada
+        '500':
+          description: Error Interno
+      security:
+        - bearerToken: []
+    post:
+      tags:
+        - person
+      summary: Añade un nuevo usuario a la aplicacion
+      description: Registra un nuevo usuario al sistema. La contraseña es cifrada.
+      operationId: persons
+      requestBody:
+        description: Crea un nuevo usuario en la aplicacion
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonDTO'
+        required: true
+      responses:
+        '200':
+          description: Usuario añadido correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/person'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: []
+    put:
+      tags:
+        - person
+      summary: Actualiza el usuario pasado por parametro
+      description: Actualiza los datos del usuario pasado por parametro. No se permite una actualizacion parcial, todos los campos son obligatorios
+      operationId: person
+      parameters:
+        - name: id
+          in: path
+          description: ID del usuario que se quiere actualizar
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Datos del usuario para editar
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonDTO'
+        required: true
+      responses:
+        '200':
+          description: Usuario editado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/person'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: []
+    delete:
+      tags:
+        - person
+      summary: Elimina el usuario de la aplicacion
+      description: Elimina al usuario con el ID pasado por parametro. Solo se puede borrar el usuario si no tiene dependencias de otros objetos.
+      operationId: person
+      parameters:
+        - name: id
+          in: path
+          description: ID del usuario que se quiere eliminar
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Usuario eliminado correctamente
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: No se puede borrar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+
+  /persons/notPaid:
+    get:
+      tags:
+        - person
+      summary: Usuarios con pedidos pendientes de pagar
+      description: Obtiene una lista de usuarios que tienen pedidos aun pendientes por pagar
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/person'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+      security:
+        - bearerToken: []
+  /products:
+    get:
+      tags:
+        - product
+      summary: Lista de todos los productos de la aplicacion
+      operationId: products
+      description: Obtiene una lista con todos los productos de la aplicacion. No es obligatorio introducir ningun parametro adicional. Solo se puede introducir un parametro a la vez.
+      parameters:
+        - name: id
+          in: path
+          description: Obtiene el producto que tenga el id pasado por parametro
+          required: false
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Obtiene una lista con todos los productos que contengan el nombre pasado por parametro
+          required: false
+          schema:
+            type: string
+        - name: category
+          in: query
+          description: Obtiene una lista con todos los productos de la categoria pasada por parametro
+          required: false
+          schema:
+            type: string
+        - name: description
+          in: query
+          description: Obtiene una lista con los productos que contengan en la descripcion lo introducido por parametro
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '400':
+          description: Bad Request - URL o parametros mal introducidos
+        '404':
+          description: Producto no encontrado
+        '500':
+          description: Error Interno
+    post:
+      tags:
+        - product
+      summary: Añade un nuevo producto
+      operationId: products
+      description: Crea un nuevo producto en la aplicacion
+      requestBody:
+        description: Crea un nuevo usuario en la aplicacion
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductDTO'
+        required: true
+      responses:
+        '200':
+          description: Producto añadido correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+    put:
+      tags:
+        - product
+      summary: Modifica un producto
+      operationId: product
+      description: Modifica un producto existente
+      parameters:
+        - name: id
+          in: path
+          description: ID del producto que se quiere modificar
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Crea un nuevo usuario en la aplicacion
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductDTO'
+        required: true
+      responses:
+        '200':
+          description: Producto modificado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+    delete:
+      tags:
+        - product
+      summary: Elimina un producto
+      operationId: product
+      description: Elimina un producto de la aplicacion. Los productos que tengan dependencias no se podran borrar
+      parameters:
+        - name: id
+          in: path
+          description: ID del producto que se quiere borrar
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Producto eliminado correctamente
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: No se puede borrar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+  /products/soldOut:
+    get:
+      tags:
+        - product
+      summary: Muestra los productos agotados
+      operationId: soldOut
+      description: Muestra una lista de todos los productos de los que no hay existencias en algun almacen
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+  /orders:
+    get:
+      tags:
+        - order
+      summary: Lista de todos los pedidos
+      operationId: orders
+      description: Devuelve una lista con todos los pedidos hechos. Solo se puede filtrar por un parametro a la vez
+      parameters:
+        - name: id
+          in: path
+          description: Obtiene el pedido que tenga el id pasado por parametro
+          required: false
+          schema:
+            type: integer
+        - name: username
+          in: query
+          description: Obtiene una lista con todos los pedidos hechos por el usuario pasado por parametro
+          required: false
+          schema:
+            type: string
+        - name: product
+          in: query
+          description: Obtiene una lista con todos los pedidos del producto pasado por parametro
+          required: false
+          schema:
+            type: string
+        - name: paid
+          in: query
+          description: Obtiene una lista con todos los pedidos que esten pagados o no.
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '400':
+          description: Bad Request - URL o parametros mal introducidos
+        '404':
+          description: Pedido no encontrado
+        '500':
+          description: Error Interno
+      security:
+        - bearerToken: [ ]
+    post:
+      tags:
+        - order
+      summary:  Añade un nuevo pedido
+      operationId: orders
+      description: Añade un nuevo pedido a la aplicacion
+      requestBody:
+        description: Crea un nuevo pedido en la aplicacion
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderDTO'
+        required: true
+      responses:
+        '200':
+          description: Pedido añadido correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+    put:
+      tags:
+        - order
+      summary: Modifica un pedido
+      operationId: product
+      description: Modifica un pedido existente
+      parameters:
+        - name: id
+          in: path
+          description: ID del pedido que se quiere modificar
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Datos del pedido para modificar
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderDTO'
+        required: true
+      responses:
+        '200':
+          description: Pedido modificado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+    delete:
+      tags:
+        - order
+      summary: Elimina un pedido
+      operationId: product
+      description: Elimina un pedido de la aplicacion.
+      parameters:
+        - name: id
+          in: path
+          description: ID del pedido que se quiere borrar
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Producto eliminado correctamente
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: No se puede borrar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+  /inventories:
+    get:
+      tags:
+        - inventory
+      summary: Lista de todos los almacenes
+      operationId: inventories
+      description: Devuelve una lista con todos los almacenes . Solo se puede filtrar por un parametro a la vez
+      parameters:
+        - name: id
+          in: path
+          description: Obtiene el almacen que tenga el id pasado por parametro
+          required: false
+          schema:
+            type: integer
+        - name: location
+          in: query
+          description: Obtiene una lista con todos los almacenes que esten en la localizacion pasada por parametro
+          required: false
+          schema:
+            type: string
+        - name: address
+          in: query
+          description: Obtiene una lista con todos los almacenes que esten en la direccion pasada por parametro
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Inventory'
+        '400':
+          description: Bad Request - URL o parametros mal introducidos
+        '404':
+          description: Almacen no encontrado
+        '500':
+          description: Error Interno
+      security:
+        - bearerToken: [ ]
+    post:
+      tags:
+        - inventory
+      summary:  Añade un nuevo almacen
+      operationId: inventories
+      description: Añade un nuevo almacen a la aplicacion
+      requestBody:
+        description: Crea un nuevo almacen en la aplicacion
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryDTO'
+        required: true
+      responses:
+        '200':
+          description: Almacen añadido correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+    put:
+      tags:
+        - inventory
+      summary: Modifica un almacen
+      operationId: inventories
+      description: Modifica un almacen existente
+      parameters:
+        - name: id
+          in: path
+          description: ID del almacen que se quiere modificar
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Datos del almacen para modificar
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryDTO'
+        required: true
+      responses:
+        '200':
+          description: Almacen modificado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+    delete:
+      tags:
+        - inventory
+      summary: Elimina un almacen
+      operationId: inventories
+      description: Elimina un pedido de la aplicacion. No debe tener productos para poder borrarse
+      parameters:
+        - name: id
+          in: path
+          description: ID del almacen que se quiere borrar
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Almacen eliminado correctamente
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: No se puede borrar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+  /reviews:
+    get:
+      tags:
+        - review
+      summary: Lista de todas las review
+      operationId: reviews
+      description: Devuelve una lista con todos las review . Solo se puede filtrar por un parametro a la vez
+      parameters:
+        - name: id
+          in: path
+          description: Obtiene la review que tenga el id pasado por parametro
+          required: false
+          schema:
+            type: integer
+        - name: productId
+          in: query
+          description: Obtiene una lista con todos las review del id del producto pasado por parametro
+          required: false
+          schema:
+            type: string
+        - name: customerId
+          in: query
+          description: Obtiene una lista con todos las review del id del usuario pasado por parametro
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Review'
+        '400':
+          description: Bad Request - URL o parametros mal introducidos
+        '404':
+          description: Review no encontrada
+        '500':
+          description: Error Interno
+    post:
+      tags:
+        - review
+      summary: Añade una nueva review
+      operationId: reviews
+      description: Añade un nueva review a la aplicacion
+      requestBody:
+        description: Crea un nueva review con el usuario y el producto. El ID no hace falta pasarlo, es autogenerado.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewDTO'
+        required: true
+      responses:
+        '200':
+          description: Review añadida correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+    put:
+      tags:
+        - review
+      summary: Modifica una review
+      operationId: reviews
+      description: Modifica una review existente
+      parameters:
+        - name: id
+          in: path
+          description: ID de la review que se quiere modificar
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Datos de la review para modificar
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModifyReviewDTO'
+        required: true
+      responses:
+        '200':
+          description: Review modificada correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+    delete:
+      tags:
+        - review
+      summary: Elimina una review
+      operationId: reviews
+      description: Elimina una review de la aplicacion.
+      parameters:
+        - name: id
+          in: path
+          description: ID de la review que se quiere borrar
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Review eliminada correctamente
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: No se puede borrar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+  /stocks:
+    get:
+      tags:
+        - stock
+      summary: Lista de todos stocks
+      operationId: stocks
+      description: Devuelve una lista con todos los stock . Solo se puede filtrar por un parametro a la vez
+      parameters:
+        - name: id
+          in: path
+          description: Obtiene el stock que tenga el id pasado por parametro
+          required: false
+          schema:
+            type: integer
+        - name: productId
+          in: query
+          description: Obtiene una lista con todos stock del producto pasado por parametro
+          required: false
+          schema:
+            type: string
+        - name: inventoriesId
+          in: query
+          description: Obtiene una lista con todos stock del almacen pasado por parametro
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Stock'
+        '400':
+          description: Bad Request - URL o parametros mal introducidos
+        '404':
+          description: Stock no encontrado
+        '500':
+          description: Error Interno
+      security:
+        - bearerToken: [ ]
+    post:
+      tags:
+        - stock
+      summary: Añade un nuevo stocks
+      operationId: stocks
+      description: Añade un nuevo stock a un almacen
+      requestBody:
+        description: Crea una nueva entrada de stock del producto pasado en el almacen . El ID no hace falta pasarlo, es autogenerado.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockDTO'
+        required: true
+      responses:
+        '200':
+          description: Stock añadido correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stock'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+    put:
+      tags:
+        - stock
+      summary: Modifica un stock
+      operationId: stocks
+      description: Modifica un stock existente
+      parameters:
+        - name: id
+          in: path
+          description: ID del stock que se quiere modificar
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Datos del stock para modificar
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockDTO'
+        required: true
+      responses:
+        '200':
+          description: Stock modificado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stock'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+    delete:
+      tags:
+        - stock
+      summary: Elimina stock
+      operationId: stocks
+      description: Elimina un stock del almacen
+      parameters:
+        - name: id
+          in: path
+          description: ID del stock que se quiere borrar
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Stock eliminado correctamente
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: No se puede borrar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+  /shipping:
+    get:
+      tags:
+        - shipping
+      summary: Lista de todos los envios
+      operationId: shipping
+      description: Devuelve una lista con todos los envios . Solo se puede filtrar por un parametro a la vez
+      parameters:
+        - name: id
+          in: path
+          description: Obtiene el envio que tenga el id pasado por parametro
+          required: false
+          schema:
+            type: integer
+        - name: carrier
+          in: query
+          description: Obtiene una lista con todos envios de la compañia pasada por parametro
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shipping'
+        '400':
+          description: Bad Request - URL o parametros mal introducidos
+        '404':
+          description: Envio no encontrado
+        '500':
+          description: Error Interno
+      security:
+        - bearerToken: [ ]
+    post:
+      tags:
+        - shipping
+      summary: Añade un nuevo stocks
+      operationId: stocks
+      description: Crea un nuevo envio
+      requestBody:
+        description: Crea un nuevo envio asignado a un pedido . El ID no hace falta pasarlo, es autogenerado.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShippingDTO'
+        required: true
+      responses:
+        '200':
+          description: Envio añadido correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipping'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+    put:
+      tags:
+        - shipping
+      summary: Modifica un envio
+      operationId: stocks
+      description: Modifica un envio existente
+      parameters:
+        - name: id
+          in: path
+          description: ID del envio que se quiere modificar
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Datos del envio para modificar
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShippingDTO'
+        required: true
+      responses:
+        '200':
+          description: Envio modificado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipping'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+    delete:
+      tags:
+        - shipping
+      summary: Elimina un envio
+      operationId: stocks
+      description: Elimina un envio
+      parameters:
+        - name: id
+          in: path
+          description: ID del envio que se quiere borrar
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Envio eliminado correctamente
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: No se puede borrar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
+  /shipping/delivered/:
+    get:
+      tags:
+        - shipping
+      summary: Lista de los envios entregados
+      operationId: shipping
+      description: Devuelve una lista con todos los envios que hayan sido entregados a la persona pasada por parametro
+      parameters:
+        - name: id
+          in: path
+          description: ID de la persona
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shipping'
+        '400':
+          description: Bad Request - URL o parametros mal introducidos
+        '500':
+          description: Error Interno
+      security:
+        - bearerToken: [ ]
+components:
+  schemas:
+    person:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          description: Nombre del usuario
+          example: Antonio
+        username:
+          type: string
+          description: Identificador del usuario en la aplicacion
+          example: SrAntonio
+        password:
+          type: string
+          description: Hash de la contraseña del usuario
+          example: $2a$10$oNrBLgQSzoAVz9d5he.Lg.gYG79WKKEq.pRvRjJrhL23LdiPUD4lm
+        address:
+          type: string
+          description: Direccion del usuario
+          example: Avenida Roma
+        phoneNumber:
+          type: string
+          description: Telefono del usuario
+          example: 600212121
+        birthdate:
+          type: string
+          description: Fecha de nacimiento del usuario
+          example: 1990-01-01
+        active:
+          type: boolean
+          example: true
+        roles:
+          type: array
+          example: []
+      xml:
+        name: person
+    PersonDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del usuario
+          example: Antonio
+        username:
+          type: string
+          description: Identificador del usuario en la aplicacion
+          example: SrAntonio
+        password:
+          type: string
+          description: Cntraseña del usuario
+          example: 1234
+        address:
+          type: string
+          description: Direccion del usuario
+          example: Avenida Roma
+        phoneNumber:
+          type: string
+          description: Telefono del usuario
+          example: 600212121
+        birthdate:
+          type: string
+          description: Fecha de nacimiento del usuario
+          example: 1990-01-01
+      xml:
+        name: POSTPerson
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador unico del producto
+          example: 1
+        name:
+          type: string
+          description: Nombre del producto
+          example: Bombilla
+        description:
+          type: string
+          description: Descripcion del producto
+          example: Bombilla led de 4W
+        price:
+          type: number
+          format: float
+          description: Precio del producto
+          example: 3.5
+        category:
+          type: string
+          description: Categoria del producto
+          example: Electricidad
+    ProductDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del producto
+          example: Bombilla
+        description:
+          type: string
+          description: Descripcion del producto
+          example: Bombilla led de 4W
+        price:
+          type: number
+          format: float
+          description: Precio del producto
+          example: 3.5
+        category:
+          type: string
+          description: Categoria del producto
+          example: Electricidad
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador unico del pedido
+          example: 1
+        quantity:
+          type: integer
+          description: Cantidad del producto añadido
+          example: 3
+        totalPrice:
+          type: number
+          format: float
+          description: Precio total del pedido
+          example: 20.5
+        product:
+          $ref: '#/components/schemas/Product'
+        customer:
+          $ref: '#/components/schemas/person'
+    OrderDTO:
+      type: object
+      properties:
+        quantity:
+          type: integer
+          description: Cantidad del producto añadido
+          example: 3
+        totalPrice:
+          type: number
+          format: float
+          description: Precio total del pedido
+          example: 20.5
+        product:
+          type: integer
+          description: Identificador unico del producto
+          example: 1
+        customer:
+          type: integer
+          description: Identificador unico del usuario
+          example: 1
+    Inventory:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador unico del almacen
+          example: 1
+        location:
+          type: string
+          description: Localizacion en la que se encuentra el almacen
+          example: Madrid
+        address:
+          type: string
+          description: Direccion del almacen
+          example: Calle España
+        lastUpdate:
+          type: string
+          format: date
+          description: Ultima actualizacion del almacen
+        totalValue:
+          type: number
+          format: float
+          description: Valor total de los productos que hay en el almacen
+          example: 420.0
+    InventoryDTO:
+      type: object
+      properties:
+        location:
+          type: string
+          description: Localizacion en la que se encuentra el almacen
+          example: Madrid
+        address:
+          type: string
+          description: Direccion del almacen
+          example: Calle España
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador unico de la review
+          example: 1
+        customerReview:
+          $ref: '#/components/schemas/person'
+        productReview:
+          $ref: '#/components/schemas/Product'
+        rating:
+          type: number
+          format: float
+          description: Puntuacion de la review
+          example: 5.0
+        comment:
+          type: string
+          description: Comentario de la review
+          example: Producto perfecto
+        date:
+          type: number
+          format: date
+          description: Fecha en la que la review fue escrita
+          example: 2022-12-22
+    ReviewDTO:
+      type: object
+      properties:
+        customerReview:
+          type: integer
+          description: Identificador del cliente
+          example: 1
+        productReview:
+          type: integer
+          description: Identificador del producto
+          example: 2
+        rating:
+          type: number
+          format: float
+          description: Puntuacion de la review
+          example: 5.0
+        comment:
+          type: string
+          description: Comentario de la review
+          example: Producto perfecto
+    ModifyReviewDTO:
+      type: object
+      properties:
+        rating:
+          type: number
+          format: float
+          description: Puntuacion de la review
+          example: 5.0
+        comment:
+          type: string
+          description: Comentario de la review
+          example: Producto perfecto
+    Stock:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador unico del stock
+          example: 1
+        productStock:
+          $ref: '#/components/schemas/Product'
+        inventoryStock:
+          $ref: '#/components/schemas/Inventory'
+        quantity:
+          type: integer
+          description: Cantidad del producto en el almacen
+          example: 3
+    StockDTO:
+      type: object
+      properties:
+        productStock:
+          type: integer
+          description: Identificador unico del producto
+          example: 1
+        inventoryStock:
+          type: integer
+          description: Identificador unico del almacen
+          example: 1
+        quantity:
+          type: integer
+          description: Cantidad del producto en el almacen
+          example: 3
+    Shipping:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador unico del envio
+          example: 1
+        carrier:
+          type: string
+          description: Nombre de la compañia encargada del envio
+          example: DHL
+        estimatedArrival:
+          type: number
+          format: date
+          description: Fecha prevista de llegada del envio
+          example: 2023-01-30
+        tracking:
+          type: string
+          description: Numero de seguimiento del envio
+          example: AAA0000001
+        status:
+          type: string
+          description: Estado del envio
+          example: AAA0000001
+        order:
+          $ref: '#/components/schemas/Order'
+    ShippingDTO:
+      type: object
+      properties:
+        carrier:
+          type: string
+          description: Nombre de la compañia encargada del envio
+          example: DHL
+        estimatedArrival:
+          type: number
+          format: date
+          description: Fecha prevista de llegada del envio
+          example: 2023-01-30
+        tracking:
+          type: string
+          description: Numero de seguimiento del envio
+          example: AAA0000001
+        status:
+          type: string
+          description: Estado del envio
+          example: AAA0000001
+        order:
+          type: integer
+          description: Identificador unico del pedidoAprendo
+          example: 1
+    ErrorCode403:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Numero del error
+          example: 403
+        message:
+          type: string
+          description: Mensaje de error
+          example: Forbidden
+        errors:
+          type: array
+          description: Descripcion de los errores.
+          example: El nombre no puede estar vacio
+      xml:
+        name: ErrorCode403
+    ErrorCode500:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Numero del error
+          example: 500
+        message:
+          type: string
+          description: Mensaje de error
+          example: Error Interno
+        errors:
+          type: array
+          example: ""
+      xml:
+        name: ErrorCode500
+
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
