@@ -1184,6 +1184,69 @@ paths:
           description: Error Interno
       security:
         - bearerToken: [ ]
+  /register:
+    post:
+      tags:
+        - security
+      summary: Añade un nuevo usuario
+      operationId: stocks
+      description: Registra un nuevo usuario en la aplicacion
+      requestBody:
+        description: Crea un nuevo usuario en la aplicacion.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonDTO'
+        required: true
+      responses:
+        '200':
+          description: Usuario añadido correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/person'
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+  /token:
+    post:
+      tags:
+        - security
+      summary: Devuelve el token JWT
+      operationId: stocks
+      description: Devuelve un token valido JWT para las operaciones securizadas
+      requestBody:
+        description: Datos del usuario
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      responses:
+        '200':
+          description: Usuario correcto
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '401':
+          description: Credenciales no validas
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+
 components:
   schemas:
     person:
@@ -1510,6 +1573,34 @@ components:
           type: integer
           description: Identificador unico del pedidoAprendo
           example: 1
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Nombre de usuario
+          example: SrAntonioJWT
+        password:
+          type: string
+          description: Contraseña del usuario
+          example: 1234
+    Token:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Token JWT generado
+          example: eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiU3JBbnRvbmlvSldUIiwiZXhwIjoxNjc5NjU3MDE3LCJpYXQiOjE2Nzk2NTM0MTcsInNjb3BlIjoiIn0.WHpLUAezcK4juJxOMotztWK4EVeXcwmfJ96fHq29Tgq8hbAV6kkQpTVvsqqLp2QiSt4ZpKclzFScOoEgaP1TgluqTHIO6Uth_Gjr8oX1Qlrb5rjdW8jXsSGflox0ZrNq4Czo-Yvm0bsHe1cKeHlNrqAw52jwdn0ELAaugxM3C19Bj9vcweH4z_xQq5GM2s1Y8Vytxzv_g-WI08-kosR9mklH5M0mbHcEcQ7czGsY4Le7qMyYLU_GaW4qqQljZbxJcRTpwXvQNmADzUZzLnG78XIO_Hs5vaRATX-cYq-747RNF3chFyus97PfzBQ3BMa-Zyw5Pb5_8UaZltbrpW58ng
+        username:
+          type: string
+          description: Nombre de usuario del token
+          example: SrAntonioJWT
+        roles:
+          type: array
+          description: Roles del usuario
+          example: []
+
+
     ErrorCode403:
       type: object
       properties:
