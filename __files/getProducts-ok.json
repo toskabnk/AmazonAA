@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Bombilla",
+    "description": "Bombilla led de 4W",
+    "price": 3.5,
+    "category": "Electricidad"
+  },
+  {
+    "id": 2,
+    "name": "Tornillo",
+    "description": "Tornillo Metrica 3",
+    "price": 0.5,
+    "category": "Ferreteria"
+  }
+]

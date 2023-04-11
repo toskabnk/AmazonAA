@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/products/2",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n    \"name\":\"Rizatriptan\",\n    \"description\":\"Pastillas con compuesto activo\",\n    \"price\":200.5,\n    \"category\":\"Farmacia\"\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "putProduct-ok.json"
+  }
+}
