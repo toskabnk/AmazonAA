@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/reviews/5",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n    \"rating\":5,\n    \"comment\":\"Se funden muy rapido\"\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "putReview-ko2.json"
+  }
+}

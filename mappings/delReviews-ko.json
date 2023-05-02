@@ -1,13 +1,13 @@
 {
   "request": {
     "method": "DELETE",
-    "url": "/products/2"
+    "url": "/reviews/5"
   },
   "response": {
     "status": 404,
     "headers": {
       "Content-Type": "application/json"
     },
-    "bodyFileName": "delProduct-ko.json"
+    "bodyFileName": "putReview-ko2.json"
   }
 }

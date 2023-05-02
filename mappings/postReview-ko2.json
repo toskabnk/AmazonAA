@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/reviews",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n    \"customerId\":1,\n    \"productId\":5,\n    \"rating\":5,\n    \"comment\":\"Buena bombilla, de muy bajo consumo\"\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "postReview-ko2.json"
+  }
+}
