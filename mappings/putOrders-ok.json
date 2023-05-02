@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/orders/1",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n    \"quantity\":5,\n    \"paid\":true,\n    \"productId\":1\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "putOrders-ok.json"
+  }
+}

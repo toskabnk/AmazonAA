@@ -1,0 +1,24 @@
+{
+  "id": 33,
+  "quantity": 1,
+  "paid": false,
+  "totalPrice": 5.0,
+  "product": {
+    "id": 1,
+    "name": "Bombilla",
+    "description": "Bombilla led 4W",
+    "price": 5.0,
+    "category": "Electricidad"
+  },
+  "customer": {
+    "id": 2,
+    "name": "Angeles",
+    "username": "SrAngeles",
+    "password": "1234",
+    "address": "Avd Andalucia",
+    "phoneNumber": "111111111",
+    "birthdate": null,
+    "active": false,
+    "roles": []
+  }
+}

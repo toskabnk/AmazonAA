@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/orders?username=SrAtonio"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "getOrders-ok2.json"
+  }
+}

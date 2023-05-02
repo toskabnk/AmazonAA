@@ -1,12 +1,13 @@
 {
   "request": {
     "method": "DELETE",
-    "url": "/persons/2"
+    "url": "/orders/3"
   },
   "response": {
-    "status": 204,
+    "status": 404,
     "headers": {
       "Content-Type": "application/json"
-    }
+    },
+    "bodyFileName": "delOrders-ko2.json"
   }
 }
