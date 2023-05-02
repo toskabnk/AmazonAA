@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/persons/1",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{    \"name\": \"Antonio\",\n    \"username\": \"SrAtonioModificado\",\n    \"password\": \"1234\",\n    \"address\": \"Avd Andalucia\",\n    \"phoneNumber\": \"123456789\",\n    \"birthdate\": null}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "putPerson-ok.json"
+  }
+}

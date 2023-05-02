@@ -1,0 +1,11 @@
+{
+  "id": 65,
+  "name": "AntonioTest",
+  "username": "SrAntonio",
+  "password": "$2a$10$RrJOXOMbeIniFW2XOb3s9.EgBXT2FbPebHut5PmQAPVVLvbhqJcV.",
+  "address": "Avd Andalucia",
+  "phoneNumber": "999999999",
+  "birthdate": "1990-01-01",
+  "active": true,
+  "roles": null
+}

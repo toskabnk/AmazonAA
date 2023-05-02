@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "name": "Antonio",
+    "username": "SrAtonio",
+    "password": "1234",
+    "address": "Avd Andalucia",
+    "phoneNumber": "123456789",
+    "birthdate": null,
+    "active": true,
+    "roles": []
+  }
+]
