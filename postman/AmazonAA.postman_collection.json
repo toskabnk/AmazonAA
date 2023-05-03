@@ -34,11 +34,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/persons",
+							"raw": "{{server_url}}/persons",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"persons"
 							]
@@ -52,11 +51,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/persons/1",
+							"raw": "{{server_url}}/persons/1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"persons",
 								"1"
@@ -71,11 +69,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/persons?name=Antonio",
+							"raw": "{{server_url}}/persons?name=Antonio",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"persons"
 							],
@@ -95,11 +92,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/persons?username=SrToska",
+							"raw": "{{server_url}}/persons?username=SrToska",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"persons"
 							],
@@ -119,11 +115,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/persons?phoneNumber=666666666",
+							"raw": "{{server_url}}/persons?phoneNumber=666666666",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"persons"
 							],
@@ -143,11 +138,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/persons/notPaid/",
+							"raw": "{{server_url}}/persons/notPaid/",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"persons",
 								"notPaid",
@@ -172,11 +166,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/persons",
+							"raw": "{{server_url}}/persons",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"persons"
 							]
@@ -199,11 +192,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/persons/1",
+							"raw": "{{server_url}}/persons/1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"persons",
 								"1"
@@ -218,11 +210,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/persons/1",
+							"raw": "{{server_url}}/persons/1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"persons",
 								"1"
@@ -272,11 +263,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/products",
+							"raw": "{{server_url}}/products",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"products"
 							]
@@ -290,11 +280,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/products/1",
+							"raw": "{{server_url}}/products/1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"products",
 								"1"
@@ -309,11 +298,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/products?name=Papel",
+							"raw": "{{server_url}}/products?name=Papel",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"products"
 							],
@@ -333,11 +321,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/products?category=Hogar",
+							"raw": "{{server_url}}/products?category=Hogar",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"products"
 							],
@@ -357,11 +344,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/products?description=PALOS",
+							"raw": "{{server_url}}/products?description=PALOS",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"products"
 							],
@@ -381,11 +367,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/products/soldOut",
+							"raw": "{{server_url}}/products/soldOut",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"products",
 								"soldOut"
@@ -409,11 +394,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/products",
+							"raw": "{{server_url}}/products",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"products"
 							]
@@ -428,7 +412,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    //ID 7 es el papel higienico\r\n    \"name\":\"Papel modificado\",\r\n    \"description\":\"Modificado\",\r\n    \"price\":888.0,\r\n    \"category\":\"Modificado\"\r\n}",
+							"raw": "{\r\n    \"name\":\"Papel modificado\",\r\n    \"description\":\"Modificado\",\r\n    \"price\":888.0,\r\n    \"category\":\"Modificado\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -436,11 +420,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/products/7",
+							"raw": "{{server_url}}/products/7",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"products",
 								"7"
@@ -464,11 +447,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/products/11",
+							"raw": "{{server_url}}/products/11",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"products",
 								"11"
@@ -518,11 +500,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/orders",
+							"raw": "{{server_url}}/orders",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"orders"
 							]
@@ -536,11 +517,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/orders?username=SrAtonio",
+							"raw": "{{server_url}}/orders?username=SrAtonio",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"orders"
 							],
@@ -560,11 +540,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/orders?product=2",
+							"raw": "{{server_url}}/orders?product=2",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"orders"
 							],
@@ -584,11 +563,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/orders?paid=false",
+							"raw": "{{server_url}}/orders?paid=false",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"orders"
 							],
@@ -617,11 +595,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/orders",
+							"raw": "{{server_url}}/orders",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"orders"
 							]
@@ -644,11 +621,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/orders/1",
+							"raw": "{{server_url}}/orders/1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"orders",
 								"1"
@@ -663,11 +639,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/orders/1",
+							"raw": "{{server_url}}/orders/1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"orders",
 								"1"
@@ -717,11 +692,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/inventories",
+							"raw": "{{server_url}}/inventories",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"inventories"
 							]
@@ -735,11 +709,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/inventories?id=1",
+							"raw": "{{server_url}}/inventories?id=1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"inventories"
 							],
@@ -759,11 +732,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/inventories?location=ma",
+							"raw": "{{server_url}}/inventories?location=ma",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"inventories"
 							],
@@ -783,11 +755,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/inventories?address=Calle",
+							"raw": "{{server_url}}/inventories?address=Calle",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"inventories"
 							],
@@ -816,11 +787,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/inventories",
+							"raw": "{{server_url}}/inventories",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"inventories"
 							]
@@ -843,11 +813,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/inventories/4",
+							"raw": "{{server_url}}/inventories/4",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"inventories",
 								"4"
@@ -862,11 +831,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/inventories/5",
+							"raw": "{{server_url}}/inventories/5",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"inventories",
 								"5"
@@ -916,11 +884,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/reviews",
+							"raw": "{{server_url}}/reviews",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"reviews"
 							]
@@ -934,11 +901,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/reviews?productId=1",
+							"raw": "{{server_url}}/reviews?productId=1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"reviews"
 							],
@@ -958,11 +924,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/reviews?customerId=1",
+							"raw": "{{server_url}}/reviews?customerId=1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"reviews"
 							],
@@ -982,11 +947,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/reviews?id=1",
+							"raw": "{{server_url}}/reviews?id=1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"reviews"
 							],
@@ -1015,11 +979,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/reviews",
+							"raw": "{{server_url}}/reviews",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"reviews"
 							]
@@ -1042,11 +1005,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/reviews/7",
+							"raw": "{{server_url}}/reviews/7",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"reviews",
 								"7"
@@ -1061,11 +1023,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/reviews/7",
+							"raw": "{{server_url}}/reviews/7",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"reviews",
 								"7"
@@ -1115,11 +1076,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/stocks",
+							"raw": "{{server_url}}/stocks",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"stocks"
 							]
@@ -1133,11 +1093,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/stocks?productId=2",
+							"raw": "{{server_url}}/stocks?productId=2",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"stocks"
 							],
@@ -1157,11 +1116,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/stocks?inventoryId=1",
+							"raw": "{{server_url}}/stocks?inventoryId=1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"stocks"
 							],
@@ -1190,11 +1148,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/stocks",
+							"raw": "{{server_url}}/stocks",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"stocks"
 							]
@@ -1217,11 +1174,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/stocks/2",
+							"raw": "{{server_url}}/stocks/2",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"stocks",
 								"2"
@@ -1236,11 +1192,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/stocks/1",
+							"raw": "{{server_url}}/stocks/1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"stocks",
 								"1"
@@ -1290,11 +1245,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/shipping",
+							"raw": "{{server_url}}/shipping",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"shipping"
 							]
@@ -1308,11 +1262,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/shipping?carrier=DHL",
+							"raw": "{{server_url}}/shipping?carrier=DHL",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"shipping"
 							],
@@ -1332,11 +1285,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/shipping/delivered/1",
+							"raw": "{{server_url}}/shipping/delivered/1",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"shipping",
 								"delivered",
@@ -1361,11 +1313,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/shipping",
+							"raw": "{{server_url}}/shipping",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"shipping"
 							]
@@ -1379,11 +1330,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/shipping/2",
+							"raw": "{{server_url}}/shipping/2",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"shipping",
 								"2"
@@ -1407,11 +1357,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/shipping/33",
+							"raw": "{{server_url}}/shipping/33",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"shipping",
 								"33"
@@ -1470,11 +1419,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/register",
+							"raw": "{{server_url}}/register",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"register"
 							]
@@ -1497,11 +1445,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/token",
+							"raw": "{{server_url}}/token",
 							"host": [
-								"localhost"
+								"{{server_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"token"
 							]
@@ -1523,11 +1470,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/products",
+									"raw": "{{server_url}}/products",
 									"host": [
-										"localhost"
+										"{{server_url}}"
 									],
-									"port": "8080",
 									"path": [
 										"products"
 									]
@@ -1541,11 +1487,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/products/1",
+									"raw": "{{server_url}}/products/1",
 									"host": [
-										"localhost"
+										"{{server_url}}"
 									],
-									"port": "8080",
 									"path": [
 										"products",
 										"1"
@@ -1560,11 +1505,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/products?name=Papel",
+									"raw": "{{server_url}}/products?name=Papel",
 									"host": [
-										"localhost"
+										"{{server_url}}"
 									],
-									"port": "8080",
 									"path": [
 										"products"
 									],
@@ -1584,11 +1528,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/products?category=Hogar",
+									"raw": "{{server_url}}/products?category=Hogar",
 									"host": [
-										"localhost"
+										"{{server_url}}"
 									],
-									"port": "8080",
 									"path": [
 										"products"
 									],
@@ -1608,11 +1551,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/products?description=PALOS",
+									"raw": "{{server_url}}/products?description=PALOS",
 									"host": [
-										"localhost"
+										"{{server_url}}"
 									],
-									"port": "8080",
 									"path": [
 										"products"
 									],
@@ -1637,11 +1579,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/reviews",
+									"raw": "{{server_url}}/reviews",
 									"host": [
-										"localhost"
+										"{{server_url}}"
 									],
-									"port": "8080",
 									"path": [
 										"reviews"
 									]
@@ -1655,11 +1596,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/reviews?productId=1",
+									"raw": "{{server_url}}/reviews?productId=1",
 									"host": [
-										"localhost"
+										"{{server_url}}"
 									],
-									"port": "8080",
 									"path": [
 										"reviews"
 									],
@@ -1679,11 +1619,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/reviews?customerId=1",
+									"raw": "{{server_url}}/reviews?customerId=1",
 									"host": [
-										"localhost"
+										"{{server_url}}"
 									],
-									"port": "8080",
 									"path": [
 										"reviews"
 									],
@@ -1703,11 +1642,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/reviews?id=1",
+									"raw": "{{server_url}}/reviews?id=1",
 									"host": [
-										"localhost"
+										"{{server_url}}"
 									],
-									"port": "8080",
 									"path": [
 										"reviews"
 									],
@@ -1724,6 +1662,1564 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Wiremock",
+			"item": [
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "getProductOk",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/products/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getProductsOk",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/products",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getProductKO",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/products/3",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"products",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "productsOk",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Rizatriptan\",\r\n    \"description\":\"Pastillas maravillosas para los dolores de cabeza\",\r\n    \"price\":41.5,\r\n    \"category\":\"Farmacia\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/products",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "productsOk2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Pico\",\r\n    \"description\":\"Pico para minar\",\r\n    \"price\":20.0,\r\n    \"category\":\"Mineria\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/products",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "productsKO",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"\",\r\n    \"description\":\"Pastillas maravillosas para los dolores de cabeza\",\r\n    \"price\":41.5,\r\n    \"category\":\"Farmacia\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/products",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "productsOk",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Rizatriptan\",\r\n    \"description\":\"Pastillas Pastillas con compuesto activo\",\r\n    \"price\":205.5,\r\n    \"category\":\"Farmacia\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/products/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "productsOk2",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Rizatriptan\",\r\n    \"description\":\"Pastillas Pastillas con compuesto activo\",\r\n    \"price\":205.5,\r\n    \"category\":\"Farmacia\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/products/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "productsKO",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Rizatriptan\",\r\n    \"description\":\"Pastillas Pastillas con compuesto activo\",\r\n    \"price\":205.5,\r\n    \"category\":\"Farmacia\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/products/2",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"products",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "productsOk",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/products/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "productsOk2",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/products/3",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"products",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "productsKO",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/products/2",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"products",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Person",
+					"item": [
+						{
+							"name": "personsOk",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/persons",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"persons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "personsOk2",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/persons/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"persons",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "personsKO",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/persons/5",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"persons",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "persons",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"AntonioTest\",\r\n    \"username\":\"SrAntonio\",\r\n    \"password\":\"1234\",\r\n    \"address\":\"Avd Andalucia\",\r\n    \"phoneNumber\":\"999999999\",\r\n    \"birthdate\":\"1990-01-01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/persons",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"persons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "personsKO",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"\",\r\n    \"username\":\"SrAntonio\",\r\n    \"password\":\"1234\",\r\n    \"address\":\"Avd Andalucia\",\r\n    \"phoneNumber\":\"999999999\",\r\n    \"birthdate\":\"1990-01-01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/persons",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"persons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "personsKO2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"Antonio\",\r\n    \"username\":\"SrToska\",\r\n    \"password\":\"1234\",\r\n    \"address\":\"Avd Andalucia\",\r\n    \"phoneNumber\":\"999999999\",\r\n    \"birthdate\":\"1990-01-01\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/persons",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"persons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "personsOk",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Antonio\",\r\n    \"username\": \"SrAtonioModificado\",\r\n    \"password\": \"1234\",\r\n    \"address\": \"Avd Andalucia\",\r\n    \"phoneNumber\": \"123456789\",\r\n    \"birthdate\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/persons/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"persons",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "personsKO",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{    \"name\": \"\",\r\n    \"username\": \"SrAtonioModificado\",\r\n    \"password\": \"1234\",\r\n    \"address\": \"Avd Andalucia\",\r\n    \"phoneNumber\": \"123456789\",\r\n    \"birthdate\": null}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/persons/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"persons",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "personsKO2",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{    \"name\": \"Antonio\",\r\n    \"username\": \"SrAtonio\",\r\n    \"password\": \"1234\",\r\n    \"address\": \"Avd Andalucia\",\r\n    \"phoneNumber\": \"123456789\",\r\n    \"birthdate\": null}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/persons/5",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"persons",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "personsOk",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/persons/2",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"persons",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "personsKO",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/persons/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"persons",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "personsKO2",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/persons/5",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"persons",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Review",
+					"item": [
+						{
+							"name": "reviewsOk",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/reviews",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviewsOk2",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/reviews?productId=1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"reviews"
+									],
+									"query": [
+										{
+											"key": "productId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviewsKO",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/reviews?productId=100",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"reviews"
+									],
+									"query": [
+										{
+											"key": "productId",
+											"value": "100"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviewsOk",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\":1,\r\n    \"productId\":1,\r\n    \"rating\":5,\r\n    \"comment\":\"Buena bombilla, de muy bajo consumo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/reviews",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviewsKO",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\":1,\r\n    \"productId\":1,\r\n    \"rating\":5,\r\n    \"comment\":\"Buena bombilla, de muy bajo consumo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/reviews",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviewsKO2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\":1,\r\n    \"productId\":5,\r\n    \"rating\":5,\r\n    \"comment\":\"Buena bombilla, de muy bajo consumo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/reviews",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviewsOk",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rating\":3,\r\n    \"comment\":\"Se funden muy rapido\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/reviews/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"reviews",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviewsKO",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rating\":10,\r\n    \"comment\":\"Se funden muy rapido\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/reviews/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"reviews",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviewsKO2",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rating\":5,\r\n    \"comment\":\"Se funden muy rapido\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/reviews/5",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"reviews",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviewsOk",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/reviews/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"reviews",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviewsKO",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/reviews/5",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"reviews",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reviewsKO2",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/reviews/5",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"reviews",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "ordersOk",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/orders",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ordersOk2",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/orders?username=SrAtonio",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "SrAtonio"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ordersOk2 Copy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/orders?username=SrAto",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "SrAto"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ordersOk",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantity\":1,\r\n    \"paid\":false,\r\n    \"productId\":1,\r\n    \"customerId\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/orders",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ordersKO",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantity\":0,\r\n    \"paid\":false,\r\n    \"productId\":1,\r\n    \"customerId\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/orders",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ordersKO2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantity\":1,\r\n    \"paid\":false,\r\n    \"productId\":1,\r\n    \"customerId\":5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/orders",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ordersOk",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantity\":5,\r\n    \"paid\":true,\r\n    \"productId\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/orders/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"orders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ordersKO",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantity\":0,\r\n    \"paid\":true,\r\n    \"productId\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/orders/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"orders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ordersKO",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantity\":5,\r\n    \"paid\":true,\r\n    \"productId\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/orders/5",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"orders",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ordersOk",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/orders/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"orders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ordersKO",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/orders/2",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"orders",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ordersKO2",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/orders/3",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"orders",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Shipping",
+					"item": [
+						{
+							"name": "shippingOk",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/shipping",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"shipping"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "shippingOk2",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/shipping?carrier=DHL",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"shipping"
+									],
+									"query": [
+										{
+											"key": "carrier",
+											"value": "DHL"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "shippingKO",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/shipping/delivered/5",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"shipping",
+										"delivered",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "shippingOk",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"carrier\":\"DHL\",\r\n    \"estimatedArrival\":\"2023-01-30\",\r\n    \"tracking\":\"AAA0000001\",\r\n    \"status\":\"in transit\",\r\n    \"orderId\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/shipping",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"shipping"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "shippingKO",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"carrier\":\"DHL\",\r\n    \"estimatedArrival\":\"2023-01-30\",\r\n    \"tracking\":\"AAA0000001\",\r\n    \"status\":\"in transit\",\r\n    \"orderId\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/shipping",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"shipping"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "shippingKO2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"carrier\":\"DHL\",\r\n    \"estimatedArrival\":\"2023-01-30\",\r\n    \"tracking\":\"AAA0000001\",\r\n    \"status\":\"in transit\",\r\n    \"orderId\":5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/shipping",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"shipping"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "shippingOk",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"carrier\":\"SEUR\",\r\n    \"estimatedArrival\":\"2024-01-30\",\r\n    \"tracking\":\"AAA0000002\",\r\n    \"status\":\"problems\",\r\n    \"orderId\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/shipping/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"shipping",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "shippingKO",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"carrier\":\"SEUR\",\r\n    \"estimatedArrival\":\"2024-01-30\",\r\n    \"tracking\":\"AAA0000002\",\r\n    \"status\":\"problems\",\r\n    \"orderId\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/shipping/5",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"shipping",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "shippingKO2",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"carrier\":\"SEUR\",\r\n    \"estimatedArrival\":\"2024-01-30\",\r\n    \"tracking\":\"AAA0000002\",\r\n    \"status\":\"problems\",\r\n    \"orderId\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_url}}/shipping/6",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"shipping",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "shippingOk",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/shipping/1",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"shipping",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "shippingKO",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/shipping/5",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"shipping",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "shippingKO2",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_url}}/shipping/6",
+									"host": [
+										"{{server_url}}"
+									],
+									"path": [
+										"shipping",
+										"6"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "server_url",
+			"value": "localhost:8080"
 		}
 	]
 }
