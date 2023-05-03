@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "/reviews/5"
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "putReview-ko2.json"
+  }
+}

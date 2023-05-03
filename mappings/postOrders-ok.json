@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/orders",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n    \"quantity\":1,\n    \"paid\":false,\n    \"productId\":1,\n    \"customerId\":2\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "postOrders-ok.json"
+  }
+}

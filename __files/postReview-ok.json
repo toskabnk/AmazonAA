@@ -1,0 +1,24 @@
+{
+  "id": 1,
+  "customerReview": {
+    "id": 1,
+    "name": "Antonio",
+    "username": "SrAtonio",
+    "password": "1234",
+    "address": "Avd Andalucia",
+    "phoneNumber": "123456789",
+    "birthdate": null,
+    "active": true,
+    "roles": []
+  },
+  "productReview": {
+    "id": 1,
+    "name": "Bombilla",
+    "description": "Bombilla led 4W",
+    "price": 4.0,
+    "category": "Electricidad"
+  },
+  "rating": 5.0,
+  "comment": "Buena bombilla, de muy bajo consumo",
+  "date": "2023-05-02"
+}

@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "/orders/2"
+  },
+  "response": {
+    "status": 500,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "delOrders-ko.json"
+  }
+}

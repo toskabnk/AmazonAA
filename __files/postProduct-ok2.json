@@ -1,0 +1,9 @@
+[
+  {
+    "id": 3,
+    "name":"Pico",
+    "description":"Pico para minar",
+    "price":20.0,
+    "category":"Mineria"
+  }
+]

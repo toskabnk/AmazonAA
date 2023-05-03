@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/shipping/delivered/5"
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "getPersons-ko.json"
+  }
+}

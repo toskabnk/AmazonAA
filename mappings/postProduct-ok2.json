@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/products",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n    \"name\":\"Pico\",\n    \"description\":\"Pico para minar\",\n    \"price\":20.0,\n    \"category\":\"Mineria\"\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "postProduct-ok2.json"
+  }
+}

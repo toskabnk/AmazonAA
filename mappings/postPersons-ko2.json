@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/persons",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\"name\":\"Antonio\",\n    \"username\":\"SrToska\",\n    \"password\":\"1234\",\n    \"address\":\"Avd Andalucia\",\n    \"phoneNumber\":\"999999999\",\n    \"birthdate\":\"1990-01-01\"}"
+      }
+    ]
+  },
+  "response": {
+    "status": 500,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "postPersons-ko2.json"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/products/3",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n    \"name\":\"Pico\",\n    \"description\":\"Pico de diamante\",\n    \"price\":2000.0,\n    \"category\":\"Mineria\"\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "putProduct-ok2.json"
+  }
+}

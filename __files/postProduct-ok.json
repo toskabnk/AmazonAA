@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "name":"Rizatriptan",
+    "description":"Pastillas maravillosas para los dolores de cabeza",
+    "price":41.5,
+    "category":"Farmacia"
+  }
+]

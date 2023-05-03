@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/reviews/1",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n    \"rating\":3,\n    \"comment\":\"Se funden muy rapido\"\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "putReview-ok.json"
+  }
+}

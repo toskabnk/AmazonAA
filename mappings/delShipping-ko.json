@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "/shipping/5"
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "putShipping-ko.json"
+  }
+}

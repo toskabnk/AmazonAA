@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "Antonio",
+    "username": "SrAtonio",
+    "password": "1234",
+    "address": "Avd Andalucia",
+    "phoneNumber": "123456789",
+    "birthdate": null,
+    "active": true,
+    "roles": []
+  },
+  {
+    "id": 2,
+    "name": "Angeles",
+    "username": "SrAngeles",
+    "password": "1234",
+    "address": "Avd Andalucia",
+    "phoneNumber": "111111111",
+    "birthdate": null,
+    "active": false,
+    "roles": []
+  }
+]

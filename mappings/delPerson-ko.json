@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "/persons/1"
+  },
+  "response": {
+    "status": 403,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "delPersons-ko.json"
+  }
+}

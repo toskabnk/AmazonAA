@@ -1,0 +1,9 @@
+[
+  {
+    "id": 3,
+    "name":"Pico",
+    "description":"Pico de diamante",
+    "price":2000.0,
+    "category":"Mineria"
+  }
+]

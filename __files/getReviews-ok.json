@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "customerReview": {
+      "id": 1,
+      "name": "Antonio",
+      "username": "SrAtonio",
+      "password": "1234",
+      "address": "Avd Andalucia",
+      "phoneNumber": "123456789",
+      "birthdate": null,
+      "active": true,
+      "roles": []
+    },
+    "productReview": {
+      "id": 1,
+      "name": "Bombilla",
+      "description": "Bombilla led 4W",
+      "price": 5.0,
+      "category": "Electricidad"
+    },
+    "rating": 5.0,
+    "comment": "Buena bombilla, de muy bajo consumo",
+    "date": "2022-12-12"
+  },
+  {
+    "id": 2,
+    "customerReview": {
+      "id": 5,
+      "name": "Ana Carmen",
+      "username": "SrAna",
+      "password": "1234",
+      "address": "Avd Andalucia",
+      "phoneNumber": "444444444",
+      "birthdate": null,
+      "active": false,
+      "roles": []
+    },
+    "productReview": {
+      "id": 3,
+      "name": "Pico",
+      "description": "Pico para minar",
+      "price": 5.0,
+      "category": "Mineria"
+    },
+    "rating": 4.0,
+    "comment": "Cumple su funcion",
+    "date": "2022-12-12"
+  }
+]

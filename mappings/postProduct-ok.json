@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/products",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n    \"name\":\"Rizatriptan\",\n    \"description\":\"Pastillas maravillosas para los dolores de cabeza\",\n    \"price\":41.5,\n    \"category\":\"Farmacia\"\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "postProduct-ok.json"
+  }
+}

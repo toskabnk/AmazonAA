@@ -1,0 +1,31 @@
+{
+  "id": 33,
+  "carrier": "DHL",
+  "estimatedArrival": "2023-01-30",
+  "tracking": "AAA0000001",
+  "status": "in transit",
+  "order": {
+    "id": 1,
+    "quantity": 5,
+    "paid": true,
+    "totalPrice": 25.0,
+    "product": {
+      "id": 1,
+      "name": "Bombilla",
+      "description": "Bombilla led 4W",
+      "price": 5.0,
+      "category": "Electricidad"
+    },
+    "customer": {
+      "id": 1,
+      "name": "Antonio",
+      "username": "SrAtonio",
+      "password": "$2a$10$yo7PCAYZcoskQtv83sbcH.RDF9j41KmGUJcK./GH/RkE4JUyRKZ7O",
+      "address": "Avd Andalucia",
+      "phoneNumber": "123456789",
+      "birthdate": null,
+      "active": true,
+      "roles": []
+    }
+  }
+}
