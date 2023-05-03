@@ -13,6 +13,6 @@
     "headers": {
       "Content-Type": "application/json"
     },
-    "bodyFileName": "postPerson-ko.json"
+    "bodyFileName": "postPersons-ko.json"
   }
 }

@@ -4,7 +4,7 @@
     "url": "/products/2",
     "bodyPatterns": [
       {
-        "equalToJson": "{\n    \"name\":\"Rizatriptan\",\n    \"description\":\"Pastillas con compuesto activo\",\n    \"price\":200.5,\n    \"category\":\"Farmacia\"\n}"
+        "equalToJson": "{\n    \"name\":\"Rizatriptan\",\n    \"description\":\"Pastillas Pastillas con compuesto activo\",\n    \"price\":205.5,\n    \"category\":\"Farmacia\"\n}"
       }
     ]
   },
@@ -13,6 +13,6 @@
     "headers": {
       "Content-Type": "application/json"
     },
-    "bodyFileName": "putProduct-ok.json"
+    "bodyFileName": "putProduct-ko.json"
   }
 }
