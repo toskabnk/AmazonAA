@@ -799,6 +799,34 @@
 					"response": []
 				},
 				{
+					"name": "inventories/{id}/waypoint",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"latitude\":41.669762876367216,\r\n    \"longitude\":-0.8786238186789413\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_url}}/inventories/1/waypoint",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"inventories",
+								"1",
+								"waypoint"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "inventories/{id}",
 					"request": {
 						"method": "PUT",

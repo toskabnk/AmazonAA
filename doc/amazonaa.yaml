@@ -701,6 +701,43 @@ paths:
                 $ref: '#/components/schemas/ErrorCode500'
       security:
         - bearerToken: [ ]
+  /inventories/{id}/waypoint:
+    post:
+      tags:
+        - inventory
+      summary: Añade la ubicacion en latitud y longitud al almacen
+      operationId: inventories/{id}/waypoint
+      description: Añade la ubicacion en latitud y longitud al almacen
+      requestBody:
+        description: Añade a un almacen la ubicacion en latitud y longitud al almacen
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryMapDTO'
+        required: true
+      responses:
+        '200':
+          description: Ubicacion añadida correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '403':
+          description: Valores incorrectos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode403'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
   /reviews:
     get:
       tags:
@@ -1425,6 +1462,16 @@ components:
           format: float
           description: Valor total de los productos que hay en el almacen
           example: 420.0
+        latitude:
+          type: number
+          format: double
+          description: Latitud en la que se encuentra el almacen
+          example: 41.669762876367216
+        longitud:
+          type: number
+          format: double
+          description: Longitud en la que se encuentra el almacen
+          example: -0.8786238186789413
     InventoryDTO:
       type: object
       properties:
@@ -1436,6 +1483,19 @@ components:
           type: string
           description: Direccion del almacen
           example: Calle España
+    InventoryMapDTO:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitud en la que se encuentra el almacen
+          example: 41.669762876367216
+        longitud:
+          type: number
+          format: double
+          description: Longitud en la que se encuentra el almacen
+          example: -0.8786238186789413
     Review:
       type: object
       properties:

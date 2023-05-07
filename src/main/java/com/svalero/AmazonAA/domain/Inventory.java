@@ -40,6 +40,12 @@ public class Inventory {
     @Column
     private float totalValue;
 
+    @Column
+    private double latitude;
+
+    @Column
+    private double longitude;
+
     @ToString.Exclude
     @OneToMany(mappedBy = "productStock")
     @JsonBackReference(value = "productId_product")
