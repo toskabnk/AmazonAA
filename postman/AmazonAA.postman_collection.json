@@ -406,6 +406,35 @@
 					"response": []
 				},
 				{
+					"name": "products/{id}/image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server_url}}/products/5/image",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"products",
+								"5",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "products/{id}",
 					"request": {
 						"method": "PUT",

@@ -38,6 +38,9 @@ public class Product {
     @Column
     private String category;
 
+    @Column
+    private String imageURL;
+
     @ToString.Exclude
     @OneToMany(mappedBy = "inventoryStock")
     @JsonBackReference(value = "inventoryId_inventory")

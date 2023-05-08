@@ -73,7 +73,7 @@ public class AmazonConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/register", "/token", "/h2-console/**").permitAll()
+                .antMatchers("/register", "/token", "/h2-console/**", "/productImages/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/products/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/reviews/**").permitAll()
                 .anyRequest().authenticated();

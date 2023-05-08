@@ -76,6 +76,11 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.tika</groupId>
+			<artifactId>tika-core</artifactId>
+			<version>1.27</version>
+		</dependency>
 	</dependencies>
 
 	<build>

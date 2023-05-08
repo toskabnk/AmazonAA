@@ -3,8 +3,10 @@ package com.svalero.AmazonAA.controller;
 import com.svalero.AmazonAA.domain.Product;
 import com.svalero.AmazonAA.domain.dto.ProductDTO;
 import com.svalero.AmazonAA.exception.ErrorException;
+import com.svalero.AmazonAA.exception.FileNotImageException;
 import com.svalero.AmazonAA.exception.ProductNotFoundException;
 import com.svalero.AmazonAA.service.ProductService;
+import org.apache.tika.Tika;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +14,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -61,6 +65,14 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
+    @PostMapping("/products/{id}/image")
+    public ResponseEntity<Product> addImageToProduct(@PathVariable long id, @RequestParam("file") MultipartFile file) throws ProductNotFoundException, IOException, FileNotImageException {
+        logger.info("POST Image");
+        Product product = productService.saveImage(id, file);
+        logger.info("END POST Image");
+        return ResponseEntity.ok(product);
+    }
+
     @GetMapping("/products/soldOut")
     public ResponseEntity<List<Product>> getSoldOutProducts(){
         logger.info("GET solOutProducts");
@@ -104,6 +116,13 @@ public class ProductController {
         logger.error("Product no encontrado");
         ErrorException errorException= new ErrorException(404, pnfe.getMessage());
         return new ResponseEntity<>(errorException, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(FileNotImageException.class)
+    public ResponseEntity<ErrorException> handleFileNotImageException(FileNotImageException pnfe){
+        logger.error("El archivo no es una imagen");
+        ErrorException errorException= new ErrorException(400, pnfe.getMessage());
+        return new ResponseEntity<>(errorException, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)

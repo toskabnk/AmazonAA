@@ -363,6 +363,54 @@ paths:
                 $ref: '#/components/schemas/ErrorCode500'
       security:
         - bearerToken: [ ]
+  /products/{id}/image:
+    post:
+      tags:
+        - product
+      summary: Añade un nuevo producto
+      operationId: products
+      description: Añade una imagen al producto
+      parameters:
+        - name: id
+          in: path
+          description: ID del producto al que se quiere añadir una imagen
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Imagen que se quiere añadir
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+        required: true
+      responses:
+        '200':
+          description: Producto añadido correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
+        '400':
+          description: El archivo no es una imagen
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode400Image'
+        '500':
+          description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
+      security:
+        - bearerToken: [ ]
   /products/soldOut:
     get:
       tags:
@@ -1678,6 +1726,23 @@ components:
           example: El nombre no puede estar vacio
       xml:
         name: ErrorCode403
+    ErrorCode400Image:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Numero del error
+          example: 400
+        message:
+          type: string
+          description: Mensaje de error
+          example: Bad Request
+        errors:
+          type: array
+          description: Descripcion de los errores.
+          example: El archivo no es una imagen
+      xml:
+        name: ErrorCode400Image
     ErrorCode500:
       type: object
       properties:
