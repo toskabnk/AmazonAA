@@ -1,6 +1,7 @@
 package com.svalero.AmazonAA.service;
 
 import com.svalero.AmazonAA.domain.Inventory;
+import com.svalero.AmazonAA.domain.InventoryMapDTO;
 import com.svalero.AmazonAA.domain.Product;
 import com.svalero.AmazonAA.domain.Stock;
 import com.svalero.AmazonAA.domain.dto.InventoryDTO;
@@ -79,10 +80,23 @@ public class InventoryServiceImpl implements InventoryService{
         newInventory.setLocation(inventoryDTO.getLocation());
         newInventory.setLastUpdate(LocalDate.now());
         newInventory.setTotalValue(0);
+        newInventory.setLatitude(0);
+        newInventory.setLongitude(0);
         newInventory.setProductList(new ArrayList<>());
 
 
         return inventoryRepository.save(newInventory);
+    }
+
+    @Override
+    public Inventory addWaypointToInventory(long id, InventoryMapDTO inventoryMapDTO) throws InventoryNotFoundException {
+        Inventory existingInventory = inventoryRepository.findById(id).orElseThrow(InventoryNotFoundException::new);
+        logger.info("Inventory a añadir waypoint: " + existingInventory);
+        existingInventory.setLatitude(inventoryMapDTO.getLatitude());
+        existingInventory.setLongitude(inventoryMapDTO.getLongitude());
+        logger.info("Inventory a añadir waypoint: " + existingInventory);
+
+        return inventoryRepository.save(existingInventory);
     }
 
     @Override

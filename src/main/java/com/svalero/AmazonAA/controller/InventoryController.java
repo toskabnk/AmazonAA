@@ -1,6 +1,7 @@
 package com.svalero.AmazonAA.controller;
 
 import com.svalero.AmazonAA.domain.Inventory;
+import com.svalero.AmazonAA.domain.InventoryMapDTO;
 import com.svalero.AmazonAA.domain.dto.InventoryDTO;
 import com.svalero.AmazonAA.exception.ErrorException;
 import com.svalero.AmazonAA.exception.InventoryNotFoundException;
@@ -64,6 +65,14 @@ public class InventoryController {
         logger.info("POST Inventories");
         Inventory inventory = inventoryService.addInventory(inventoryDTO);
         logger.info("END POST Inventories");
+        return ResponseEntity.status(HttpStatus.OK).body(inventory);
+    }
+
+    @PostMapping("/inventories/{id}/waypoint")
+    public ResponseEntity<Inventory> addWaypointToInventory(@PathVariable long id,@RequestBody InventoryMapDTO inventoryMapDTO) throws InventoryNotFoundException {
+        logger.info("POST Inventories Waypoint");
+        Inventory inventory = inventoryService.addWaypointToInventory(id, inventoryMapDTO);
+        logger.info("END POST Inventories Waypoint");
         return ResponseEntity.status(HttpStatus.OK).body(inventory);
     }
 

@@ -5,17 +5,28 @@ import com.svalero.AmazonAA.domain.Product;
 import com.svalero.AmazonAA.domain.Review;
 import com.svalero.AmazonAA.domain.Stock;
 import com.svalero.AmazonAA.domain.dto.ProductDTO;
+import com.svalero.AmazonAA.exception.ErrorException;
+import com.svalero.AmazonAA.exception.FileNotImageException;
 import com.svalero.AmazonAA.exception.ProductNotFoundException;
 import com.svalero.AmazonAA.repository.OrderRepository;
 import com.svalero.AmazonAA.repository.ProductRepository;
 import com.svalero.AmazonAA.repository.ReviewRepository;
 import com.svalero.AmazonAA.repository.StockRepository;
+import org.apache.tika.Tika;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,11 +44,18 @@ public class ProductServiceImpl implements ProductService{
 
     @Autowired
     private ReviewRepository reviewRepository;
+    @Autowired
+    private Tika tika;
 
     @Autowired
     ModelMapper modelMapper;
 
     private final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
+    private final Path root = Paths.get("productImages");
+    @Autowired
+    private HttpServletRequest request;
+    @Autowired
+    private ServletRequest servletRequest;
 
     @Override
     public List<Product> findAll() {
@@ -54,6 +72,29 @@ public class ProductServiceImpl implements ProductService{
     public List<Product> findByNameContaining(String name) {
         logger.info("Name Product: " + name);
         return productRepository.findByNameContaining(name);
+    }
+
+    @Override
+    public Product saveImage(long id, MultipartFile multipartFile) throws ProductNotFoundException, IOException, FileNotImageException {
+        Path path;
+        try {
+            String mimeType = tika.detect(multipartFile.getInputStream());
+            if (!mimeType.startsWith("image/")) {
+                throw new FileNotImageException();
+            }
+            path = Paths.get(root.toAbsolutePath().toString(), multipartFile.getOriginalFilename());
+            Files.write(path, multipartFile.getBytes());
+        } catch (FileNotImageException e){
+            throw new FileNotImageException();
+        } catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+        Product existingProduct = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        String contextPath = request.getContextPath();
+        String productURL = servletRequest.getScheme() + "://" + servletRequest.getServerName() + ":" + servletRequest.getServerPort() + contextPath + "/" + root.toFile().getPath() + "/" + multipartFile.getOriginalFilename();
+        existingProduct.setImageURL(productURL);
+        logger.info("Product path: " + productURL);
+        return existingProduct;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.svalero.AmazonAA.service;
 
 import com.svalero.AmazonAA.domain.Inventory;
+import com.svalero.AmazonAA.domain.InventoryMapDTO;
 import com.svalero.AmazonAA.domain.dto.InventoryDTO;
 import com.svalero.AmazonAA.exception.InventoryNotFoundException;
 
@@ -13,6 +14,7 @@ public interface InventoryService {
     List<Inventory> findByAddress(String address);
     void updateInventory(long id) throws InventoryNotFoundException;
     Inventory addInventory(InventoryDTO inventoryDTO);
+    Inventory addWaypointToInventory(long id, InventoryMapDTO inventoryMapDTO) throws InventoryNotFoundException;
     boolean deleteInventory(long id) throws InventoryNotFoundException;
     Inventory modifyInventory(long id, InventoryDTO inventoryDTO) throws InventoryNotFoundException;
 }
