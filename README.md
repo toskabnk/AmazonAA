@@ -30,7 +30,7 @@
 - [x] Si tu API está securizada, añade la información necesaria al fichero OpenAPI 3.0
 - [x] Añade alguna operación en la que se envien o reciban ficheros
 - [x] Parametriza ambas colecciones Postman de forma que sea fácil cambiar el host, puerto o basePath de la API
-- [ ] Añade al fichero de especificación de la API (OpenAPI 3.0) un par de ejemplos para cada operación
+- [x] Añade al fichero de especificación de la API (OpenAPI 3.0) un par de ejemplos para cada operación
 - [x] Utiliza las herramientas Git y GitHub durante todo el desarrollo de la aplicación. Utiliza el gestor de Issues para los problemas/fallos que vayan surgiendo.
 
 # Como ejecutar la aplicacion:

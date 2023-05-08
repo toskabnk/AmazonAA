@@ -37,24 +37,44 @@ paths:
           required: false
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
         - name: name
           in: query
           description: Devuelve una lista de usuarios que contengan el nombre pasado por parametro
           required: false
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: Antonio
+            Ejemplo_2:
+              value: Angeles
         - name: username
           in: query
           description: Obtiene el usuario que tenga el nombre de usuario pasado por parametro
           required: false
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: SrAntonio
+            Ejemplo_2:
+              value: SrAntonioJWT
         - name: phoneNumber
           in: query
           description: Obtiene el usuario que tenga el numero de telefono pasado por parametro
           required: false
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 666999666
+            Ejemplo_2:
+              value: 111222333
       responses:
         '200':
           description: Operacion correcta
@@ -72,6 +92,10 @@ paths:
           description: Persona no encontrada
         '500':
           description: Error Interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorCode500'
       security:
         - bearerToken: []
     post:
@@ -86,6 +110,23 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PersonDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Antonio
+                  username: SrAntonio
+                  password: 1234
+                  address: Avenida Roma
+                  phoneNumber: 600212121
+                  birthdate: 1990-01-01
+              Ejemplo_2:
+                value:
+                  name: Ana
+                  username: SrAna
+                  password: 1234
+                  address: Avenida Zaragoza
+                  phoneNumber: 666333111
+                  birthdate: 1990-01-01
         required: true
       responses:
         '200':
@@ -123,12 +164,34 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       requestBody:
         description: Datos del usuario para editar
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/PersonDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Antonio
+                  username: SrAntonio
+                  password: 1234
+                  address: Avenida Roma
+                  phoneNumber: 600212121
+                  birthdate: 1990-01-01
+              Ejemplo_2:
+                value:
+                  name: Ana
+                  username: SrAna
+                  password: 1234
+                  address: Avenida Zaragoza
+                  phoneNumber: 666333111
+                  birthdate: 1990-01-01
         required: true
       responses:
         '200':
@@ -166,6 +229,11 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       responses:
         '204':
           description: Usuario eliminado correctamente
@@ -219,24 +287,44 @@ paths:
           required: false
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
         - name: name
           in: query
           description: Obtiene una lista con todos los productos que contengan el nombre pasado por parametro
           required: false
           schema:
             type: string
+          examples:
+            Ejemplo_1:
+              value: Pico
+            Ejemplo_2:
+              value: P
         - name: category
           in: query
           description: Obtiene una lista con todos los productos de la categoria pasada por parametro
           required: false
           schema:
             type: string
+          examples:
+            Ejemplo_1:
+              value: Ferreteria
+            Ejemplo_2:
+              value: Electricidad
         - name: description
           in: query
           description: Obtiene una lista con los productos que contengan en la descripcion lo introducido por parametro
           required: false
           schema:
             type: string
+          examples:
+            Ejemplo_1:
+              value: De
+            Ejemplo_2:
+              value: 15W
       responses:
         '200':
           description: Operacion correcta
@@ -264,6 +352,19 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProductDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Bombilla
+                  description: Bombilla led de 4W
+                  price: 3.5
+                  category: Electricidad
+              Ejemplo_2:
+                value:
+                  name: Pico
+                  description: Pico para minar
+                  price: 30.5
+                  category: Mineria
         required: true
       responses:
         '200':
@@ -301,12 +402,30 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       requestBody:
         description: Crea un nuevo usuario en la aplicacion
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/ProductDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Bombilla
+                  description: Bombilla led de 4W
+                  price: 3.5
+                  category: Electricidad
+              Ejemplo_2:
+                value:
+                  name: Pico
+                  description: Pico para minar
+                  price: 30.5
+                  category: Mineria
         required: true
       responses:
         '200':
@@ -344,6 +463,11 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       responses:
         '204':
           description: Producto eliminado correctamente
@@ -377,8 +501,13 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       requestBody:
-        description: Imagen que se quiere añadir
+        description: Archivo de la imagen que se quiere añadir
         content:
           multipart/form-data:
             schema:
@@ -387,6 +516,12 @@ paths:
                 file:
                   type: string
                   format: binary
+            examples:
+              Ejemplo_1:
+                value: /path/a_mi/archivo.jpg
+              Ejemplo_2:
+                value: /path/a_mi/archivo.png
+                # No funciona :(
         required: true
       responses:
         '200':
@@ -394,7 +529,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
+                $ref: '#/components/schemas/ProductWithImage'
         '401':
           description: No autorizado - No te has autenticado o ha caducado la sesion.
         '400':
@@ -449,24 +584,44 @@ paths:
           required: false
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
         - name: username
           in: query
           description: Obtiene una lista con todos los pedidos hechos por el usuario pasado por parametro
           required: false
           schema:
             type: string
+          examples:
+            Ejemplo_1:
+              value: SrAntonio
+            Ejemplo_2:
+              value: SrAntonioJWT
         - name: product
           in: query
           description: Obtiene una lista con todos los pedidos del producto pasado por parametro
           required: false
           schema:
             type: string
+          examples:
+            Ejemplo_1:
+              value: Bombilla
+            Ejemplo_2:
+              value: Pico
         - name: paid
           in: query
           description: Obtiene una lista con todos los pedidos que esten pagados o no.
           required: false
           schema:
             type: boolean
+          examples:
+            Ejemplo_1:
+              value: true
+            Ejemplo_2:
+              value: false
       responses:
         '200':
           description: Operacion correcta
@@ -496,6 +651,19 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrderDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  quantity: 3
+                  paid: false
+                  product: 1
+                  customer: 1
+              Ejemplo_2:
+                value:
+                  quantity: 1
+                  paid: true
+                  product: 2
+                  customer: 2
         required: true
       responses:
         '200':
@@ -533,12 +701,30 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       requestBody:
         description: Datos del pedido para modificar
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/OrderDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  quantity: 3
+                  paid: false
+                  product: 1
+                  customer: 1
+              Ejemplo_2:
+                value:
+                  quantity: 1
+                  paid: true
+                  product: 2
+                  customer: 2
         required: true
       responses:
         '200':
@@ -576,6 +762,11 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       responses:
         '204':
           description: Producto eliminado correctamente
@@ -609,18 +800,33 @@ paths:
           required: false
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
         - name: location
           in: query
           description: Obtiene una lista con todos los almacenes que esten en la localizacion pasada por parametro
           required: false
           schema:
             type: string
+          examples:
+            Ejemplo_1:
+              value: Sevilla
+            Ejemplo_2:
+              value: Madrid
         - name: address
           in: query
           description: Obtiene una lista con todos los almacenes que esten en la direccion pasada por parametro
           required: false
           schema:
             type: string
+          examples:
+            Ejemplo_1:
+              value: Calle España
+            Ejemplo_2:
+              value: Avenida
       responses:
         '200':
           description: Operacion correcta
@@ -658,6 +864,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Inventory'
+              examples:
+                Ejemplo_1:
+                  value:
+                    location: Madrid
+                    address: Calle España
+                Ejemplo_2:
+                  value:
+                    location: Sevilla
+                    address: Calle Sevilla
         '401':
           description: No autorizado - No te has autenticado o ha caducado la sesion.
         '403':
@@ -687,12 +902,26 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       requestBody:
         description: Datos del almacen para modificar
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/InventoryDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  location: Madrid
+                  address: Calle España
+              Ejemplo_2:
+                value:
+                  location: Sevilla
+                  address: Calle Sevilla
         required: true
       responses:
         '200':
@@ -730,6 +959,11 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       responses:
         '204':
           description: Almacen eliminado correctamente
@@ -756,12 +990,33 @@ paths:
       summary: Añade la ubicacion en latitud y longitud al almacen
       operationId: inventories/{id}/waypoint
       description: Añade la ubicacion en latitud y longitud al almacen
+      parameters:
+        - name: id
+          in: path
+          description: ID del almacen que se quiere añadir la ubicacion
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       requestBody:
         description: Añade a un almacen la ubicacion en latitud y longitud al almacen
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/InventoryMapDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  latitude: 5.0575
+                  longitude: -5.247
+              Ejemplo_2:
+                value:
+                  latitude: 41.669762876367216
+                  longitude: -0.8786238186789413
         required: true
       responses:
         '200':
@@ -800,18 +1055,33 @@ paths:
           required: false
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
         - name: productId
           in: query
           description: Obtiene una lista con todos las review del id del producto pasado por parametro
           required: false
           schema:
             type: string
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
         - name: customerId
           in: query
           description: Obtiene una lista con todos las review del id del usuario pasado por parametro
           required: false
           schema:
             type: string
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       responses:
         '200':
           description: Operacion correcta
@@ -839,6 +1109,19 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ReviewDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  customerReview: 1
+                  productReview: 1
+                  rating: 5.0
+                  comment: Producto perfecto
+              Ejemplo_2:
+                value:
+                  customerReview: 2
+                  productReview: 1
+                  rating: 1.0
+                  comment: Vino roto
         required: true
       responses:
         '200':
@@ -876,12 +1159,26 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       requestBody:
         description: Datos de la review para modificar
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/ModifyReviewDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  rating: 5.0
+                  comment: Producto perfecto
+              Ejemplo_2:
+                value:
+                  rating: 1.0
+                  comment: Vino roto
         required: true
       responses:
         '200':
@@ -919,6 +1216,11 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       responses:
         '204':
           description: Review eliminada correctamente
@@ -952,18 +1254,33 @@ paths:
           required: false
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
         - name: productId
           in: query
           description: Obtiene una lista con todos stock del producto pasado por parametro
           required: false
           schema:
             type: string
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
         - name: inventoriesId
           in: query
           description: Obtiene una lista con todos stock del almacen pasado por parametro
           required: false
           schema:
             type: string
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       responses:
         '200':
           description: Operacion correcta
@@ -993,6 +1310,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StockDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  productStock: 1
+                  inventoryStock: 1
+                  quantity: 3
+              Ejemplo_2:
+                value:
+                  productStock: 2
+                  inventoryStock: 1
+                  quantity: 4
         required: true
       responses:
         '200':
@@ -1030,12 +1358,28 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       requestBody:
         description: Datos del stock para modificar
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/StockDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  productStock: 1
+                  inventoryStock: 1
+                  quantity: 3
+              Ejemplo_2:
+                value:
+                  productStock: 2
+                  inventoryStock: 1
+                  quantity: 4
         required: true
       responses:
         '200':
@@ -1073,6 +1417,11 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       responses:
         '204':
           description: Stock eliminado correctamente
@@ -1106,12 +1455,22 @@ paths:
           required: false
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
         - name: carrier
           in: query
           description: Obtiene una lista con todos envios de la compañia pasada por parametro
           required: false
           schema:
             type: string
+          examples:
+            Ejemplo_1:
+              value: SEUR
+            Ejemplo_2:
+              value: DHL
       responses:
         '200':
           description: Operacion correcta
@@ -1141,6 +1500,21 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ShippingDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  carrier: DHL
+                  estimatedArrival: 2023-01-30
+                  tracking: AAA0000001
+                  status: EN CAMINO
+                  order: 1
+              Ejemplo_2:
+                value:
+                  carrier: SEUR
+                  estimatedArrival: 2023-01-30
+                  tracking: AAA0000002
+                  status: PROBLEMAS
+                  order: 2
         required: true
       responses:
         '200':
@@ -1178,12 +1552,32 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       requestBody:
         description: Datos del envio para modificar
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/ShippingDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  carrier: DHL
+                  estimatedArrival: 2023-01-30
+                  tracking: AAA0000001
+                  status: EN CAMINO
+                  order: 1
+              Ejemplo_2:
+                value:
+                  carrier: SEUR
+                  estimatedArrival: 2023-01-30
+                  tracking: AAA0000002
+                  status: PROBLEMAS
+                  order: 2
         required: true
       responses:
         '200':
@@ -1221,6 +1615,11 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       responses:
         '204':
           description: Envio eliminado correctamente
@@ -1254,6 +1653,11 @@ paths:
           required: true
           schema:
             type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
       responses:
         '200':
           description: Operacion correcta
@@ -1282,6 +1686,23 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PersonDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Antonio
+                  username: SrAntonio
+                  password: 1234
+                  address: Avenida Roma
+                  phoneNumber: 600212121
+                  birthdate: 1990-01-01
+              Ejemplo_2:
+                value:
+                  name: Ana
+                  username: SrAna
+                  password: 1234
+                  address: Avenida Zaragoza
+                  phoneNumber: 666333111
+                  birthdate: 1990-01-01
         required: true
       responses:
         '200':
@@ -1315,6 +1736,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Login'
+            examples:
+              Ejemplo_1:
+                value:
+                  username: SrAntonioJWT
+                  password: 1234
+              Ejemplo_2:
+                value:
+                  username: SrAna
+                  password: 1234
         required: true
       responses:
         '200':
@@ -1426,6 +1856,38 @@ components:
           type: string
           description: Categoria del producto
           example: Electricidad
+        imageURL:
+          type: string
+          description: Direccion de la imagen
+          example: null
+    ProductWithImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador unico del producto
+          example: 1
+        name:
+          type: string
+          description: Nombre del producto
+          example: Bombilla
+        description:
+          type: string
+          description: Descripcion del producto
+          example: Bombilla led de 4W
+        price:
+          type: number
+          format: float
+          description: Precio del producto
+          example: 3.5
+        category:
+          type: string
+          description: Categoria del producto
+          example: Electricidad
+        imageURL:
+          type: string
+          description: Direccion de la imagen
+          example: localhost:8080/productImages/picoMetal.png
     ProductDTO:
       type: object
       properties:
@@ -1457,6 +1919,10 @@ components:
           type: integer
           description: Cantidad del producto añadido
           example: 3
+        paid:
+          type: boolean
+          description: Si esta pagado o no
+          example: false
         totalPrice:
           type: number
           format: float
@@ -1473,11 +1939,10 @@ components:
           type: integer
           description: Cantidad del producto añadido
           example: 3
-        totalPrice:
-          type: number
-          format: float
-          description: Precio total del pedido
-          example: 20.5
+        paid:
+          type: boolean
+          description: Si esta pagado o no
+          example: false
         product:
           type: integer
           description: Identificador unico del producto
@@ -1676,7 +2141,7 @@ components:
         status:
           type: string
           description: Estado del envio
-          example: AAA0000001
+          example: EN CAMINO
         order:
           type: integer
           description: Identificador unico del pedidoAprendo
