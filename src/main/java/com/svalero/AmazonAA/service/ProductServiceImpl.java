@@ -94,6 +94,7 @@ public class ProductServiceImpl implements ProductService{
         String productURL = servletRequest.getScheme() + "://" + servletRequest.getServerName() + ":" + servletRequest.getServerPort() + contextPath + "/" + root.toFile().getPath() + "/" + multipartFile.getOriginalFilename();
         existingProduct.setImageURL(productURL);
         logger.info("Product path: " + productURL);
+        productRepository.save(existingProduct);
         return existingProduct;
     }
 

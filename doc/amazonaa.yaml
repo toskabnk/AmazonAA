@@ -135,14 +135,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/person'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -200,14 +200,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/person'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -373,14 +373,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -434,14 +434,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -530,14 +530,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductWithImage'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '400':
           description: El archivo no es una imagen
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorCode400Image'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -672,14 +672,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Order'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -733,14 +733,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Order'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -873,14 +873,14 @@ paths:
                   value:
                     location: Sevilla
                     address: Calle Sevilla
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -930,14 +930,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Inventory'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -1025,14 +1025,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Inventory'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -1130,14 +1130,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Review'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -1187,14 +1187,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Review'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -1329,14 +1329,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Stock'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -1388,14 +1388,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Stock'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -1523,14 +1523,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Shipping'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -1586,14 +1586,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Shipping'
-        '401':
-          description: No autorizado - No te has autenticado o ha caducado la sesion.
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
+        '401':
+          description: No autorizado - No te has autenticado o ha caducado la sesion.
         '500':
           description: Error Interno
           content:
@@ -1711,12 +1711,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/person'
-        '403':
+        '400':
           description: Valores incorrectos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorCode403'
+                $ref: '#/components/schemas/ErrorCode400'
         '500':
           description: Error Interno
           content:
@@ -2174,6 +2174,23 @@ components:
           example: []
 
 
+    ErrorCode400:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Numero del error
+          example: 400
+        message:
+          type: string
+          description: Mensaje de error
+          example: Bad Request
+        errors:
+          type: array
+          description: Descripcion de los errores.
+          example: El nombre no puede estar vacio
+      xml:
+        name: ErrorCode400
     ErrorCode403:
       type: object
       properties:
@@ -2184,11 +2201,11 @@ components:
         message:
           type: string
           description: Mensaje de error
-          example: Forbidden
+          example: El borrado no se ha permitido
         errors:
           type: array
-          description: Descripcion de los errores.
-          example: El nombre no puede estar vacio
+          description: Descripcion del error.
+          example: ""
       xml:
         name: ErrorCode403
     ErrorCode400Image:
