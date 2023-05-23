@@ -35,7 +35,7 @@ public class ErrorExceptionUtil {
             errors.put(fieldName, name);
             logger.error("Error: " + fieldName + " " + name);
         });
-        ErrorException errorException = new ErrorException(403, "Forbidden", errors);
+        ErrorException errorException = new ErrorException(400, "Bad Request", errors);
         return new ResponseEntity<>(errorException, HttpStatus.FORBIDDEN);
     }
 }
